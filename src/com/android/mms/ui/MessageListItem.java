@@ -58,17 +58,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.mms.MmsApp;
-import com.android.mms.R;
 import com.android.mms.data.Contact;
 import com.android.mms.data.WorkingMessage;
 import com.android.mms.model.SlideModel;
-import com.android.mms.model.SlideshowModel;
 import com.android.mms.transaction.Transaction;
 import com.android.mms.transaction.TransactionBundle;
 import com.android.mms.transaction.TransactionService;
 import com.android.mms.util.DownloadManager;
 import com.android.mms.util.ItemLoadedCallback;
 import com.android.mms.util.ThumbnailManager.ImageLoaded;
+import com.feinno.mms.R;
 import com.google.android.mms.ContentType;
 import com.google.android.mms.pdu.PduHeaders;
 

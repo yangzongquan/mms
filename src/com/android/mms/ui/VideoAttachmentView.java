@@ -28,9 +28,9 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-
-import com.android.mms.R;
 // TODO: remove dependency for SDK build
+
+import com.feinno.mms.R;
 
 /**
  * This class provides an embedded editor/viewer of video attachment.

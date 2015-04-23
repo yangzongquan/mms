@@ -50,6 +50,7 @@ import com.android.mms.ContentRestrictionException;
 import com.android.mms.ExceedMessageSizeException;
 import com.android.mms.LogTag;
 import com.android.mms.MmsConfig;
+import com.android.mms.UnsupportContentTypeException;
 import com.android.mms.dom.smil.parser.SmilXmlSerializer;
 import com.android.mms.layout.LayoutManager;
 import com.google.android.mms.ContentType;
@@ -60,7 +61,6 @@ import com.google.android.mms.pdu.PduBody;
 import com.google.android.mms.pdu.PduHeaders;
 import com.google.android.mms.pdu.PduPart;
 import com.google.android.mms.pdu.PduPersister;
-import com.android.mms.UnsupportContentTypeException;
 
 public class SlideshowModel extends Model
         implements List<SlideModel>, IModelChangedObserver {

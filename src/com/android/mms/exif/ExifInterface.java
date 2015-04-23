@@ -16,10 +16,6 @@
 
 package com.android.mms.exif;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.util.SparseIntArray;
-
 import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -44,6 +40,10 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.TimeZone;
+
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.SparseIntArray;
 
 /**
  * This class provides methods and constants for reading and writing jpeg file

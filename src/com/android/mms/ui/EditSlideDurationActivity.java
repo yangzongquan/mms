@@ -30,7 +30,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.mms.R;
+import com.feinno.mms.R;
 
 /**
  * This activity provides the function to edit the duration of given slide.

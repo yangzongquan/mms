@@ -29,7 +29,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.android.mms.R;
+import com.feinno.mms.R;
 
 /**
  * This class provides an embedded editor/viewer of picture attachment.

@@ -28,9 +28,9 @@ import android.util.Log;
 import android.widget.RemoteViews;
 
 import com.android.mms.LogTag;
-import com.android.mms.R;
 import com.android.mms.ui.ComposeMessageActivity;
 import com.android.mms.ui.ConversationList;
+import com.feinno.mms.R;
 
 public class MmsWidgetProvider extends AppWidgetProvider {
     public static final String ACTION_NOTIFY_DATASET_CHANGED =

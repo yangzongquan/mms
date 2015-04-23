@@ -46,8 +46,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.android.mms.MmsApp;
-import com.android.mms.R;
 import com.android.mms.data.Contact;
+import com.feinno.mms.R;
 
 /***
  * Presents a List of search results.  Each item in the list represents a thread which

@@ -17,6 +17,8 @@
 
 package com.android.mms.ui;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ContentResolver;
@@ -39,10 +41,8 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.Window;
 
-import com.android.mms.R;
 import com.android.mms.transaction.MessagingNotification;
-
-import java.util.ArrayList;
+import com.feinno.mms.R;
 
 /**
  * Display a class-zero SMS message to the user. Wait for the user to dismiss

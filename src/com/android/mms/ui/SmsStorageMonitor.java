@@ -22,7 +22,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-import com.android.mms.R;
+import com.feinno.mms.R;
 
 public class SmsStorageMonitor extends BroadcastReceiver {
     private Context mContext;

@@ -28,10 +28,10 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
-import com.android.mms.R;
 import com.android.mms.data.WorkingMessage;
 import com.android.mms.model.SlideModel;
 import com.android.mms.model.SlideshowModel;
+import com.feinno.mms.R;
 
 /**
  * This is an embedded editor/view to add photos and sound/video clips

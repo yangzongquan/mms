@@ -17,6 +17,10 @@
 
 package com.android.mms.ui;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+
 import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.ListActivity;
@@ -71,7 +75,6 @@ import android.widget.Toast;
 
 import com.android.mms.LogTag;
 import com.android.mms.MmsConfig;
-import com.android.mms.R;
 import com.android.mms.data.Contact;
 import com.android.mms.data.ContactList;
 import com.android.mms.data.Conversation;
@@ -81,11 +84,8 @@ import com.android.mms.transaction.SmsRejectedReceiver;
 import com.android.mms.util.DraftCache;
 import com.android.mms.util.Recycler;
 import com.android.mms.widget.MmsWidgetProvider;
+import com.feinno.mms.R;
 import com.google.android.mms.pdu.PduHeaders;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
 
 /**
  * This activity provides a list view of existing conversations.

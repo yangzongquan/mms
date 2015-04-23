@@ -43,9 +43,9 @@ import android.view.MenuItem;
 
 import com.android.mms.MmsApp;
 import com.android.mms.MmsConfig;
-import com.android.mms.R;
 import com.android.mms.transaction.TransactionService;
 import com.android.mms.util.Recycler;
+import com.feinno.mms.R;
 
 /**
  * With this activity, users can set preferences for MMS and SMS and

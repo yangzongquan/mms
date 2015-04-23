@@ -25,8 +25,8 @@ import android.content.Intent;
 import android.provider.Settings;
 import android.provider.Telephony;
 
-import com.android.mms.R;
 import com.android.mms.ui.ConversationList;
+import com.feinno.mms.R;
 
 
 /**

@@ -32,8 +32,8 @@ import android.content.Context;
 import android.database.sqlite.SqliteWrapper;
 import android.net.Uri;
 import android.provider.Telephony.Mms;
-import android.provider.Telephony.Threads;
 import android.provider.Telephony.Mms.Inbox;
+import android.provider.Telephony.Threads;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 

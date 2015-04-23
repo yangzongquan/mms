@@ -17,22 +17,19 @@
 
 package com.android.mms.ui;
 
-import java.io.IOException;
 import java.util.Map;
 
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.MediaPlayer;
 import android.net.Uri;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.android.mms.R;
+import com.feinno.mms.R;
 
 /**
  * This class provides an embedded editor/viewer of slide-show attachment.

@@ -26,8 +26,8 @@ import android.content.Intent;
 import android.provider.Settings;
 import android.provider.Telephony;
 
-import com.android.mms.R;
 import com.android.mms.ui.ManageSimMessages;
+import com.feinno.mms.R;
 
 /**
  * Receive Intent.SIM_FULL_ACTION.  Handle notification that SIM is full.

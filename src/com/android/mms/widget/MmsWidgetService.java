@@ -33,12 +33,12 @@ import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
 import com.android.mms.LogTag;
-import com.android.mms.R;
 import com.android.mms.data.Contact;
 import com.android.mms.data.Conversation;
 import com.android.mms.ui.ConversationList;
 import com.android.mms.ui.ConversationListItem;
 import com.android.mms.ui.MessageUtils;
+import com.feinno.mms.R;
 
 public class MmsWidgetService extends RemoteViewsService {
     private static final String TAG = "MmsWidgetService";

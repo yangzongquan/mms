@@ -16,14 +16,14 @@
 
 package com.android.mms.exif;
 
-import android.util.Log;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteOrder;
 import java.nio.charset.Charset;
 import java.util.Map.Entry;
 import java.util.TreeMap;
+
+import android.util.Log;
 
 /**
  * This class provides a low-level EXIF parsing API. Given a JPEG format

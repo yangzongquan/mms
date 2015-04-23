@@ -42,8 +42,8 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.VideoView;
 
-import com.android.mms.R;
 import com.android.mms.layout.LayoutManager;
+import com.feinno.mms.R;
 
 /**
  * A basic view to show the contents of a slide.

@@ -35,10 +35,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.mms.LogTag;
-import com.android.mms.R;
 import com.android.mms.data.Contact;
 import com.android.mms.data.ContactList;
 import com.android.mms.data.Conversation;
+import com.feinno.mms.R;
 
 /**
  * This class manages the view for given conversation.

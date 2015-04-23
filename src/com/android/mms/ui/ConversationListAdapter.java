@@ -26,8 +26,8 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.CursorAdapter;
 
-import com.android.mms.R;
 import com.android.mms.data.Conversation;
+import com.feinno.mms.R;
 
 /**
  * The back-end data adapter for ConversationList.

@@ -38,7 +38,7 @@ import android.widget.AbsListView;
 import android.widget.CursorAdapter;
 import android.widget.ListView;
 
-import com.android.mms.R;
+import com.feinno.mms.R;
 import com.google.android.mms.MmsException;
 
 /**

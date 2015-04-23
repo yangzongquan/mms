@@ -29,8 +29,8 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 
-import com.android.mms.R;
 import com.android.mms.util.RateController;
+import com.feinno.mms.R;
 
 public class ConfirmRateLimitActivity extends Activity {
     private static final String TAG = "ConfirmRateLimitActivity";

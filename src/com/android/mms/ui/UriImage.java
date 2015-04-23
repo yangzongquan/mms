@@ -17,6 +17,11 @@
 
 package com.android.mms.ui;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.UriMatcher;
@@ -40,11 +45,6 @@ import com.android.mms.exif.ExifInterface;
 import com.android.mms.model.ImageModel;
 import com.google.android.mms.ContentType;
 import com.google.android.mms.pdu.PduPart;
-
-import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
 
 public class UriImage {
     private static final String TAG = "Mms/image";

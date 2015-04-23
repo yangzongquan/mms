@@ -14,12 +14,12 @@
 */
 package com.android.mms.transaction;
 
-import com.android.mms.LogTag;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+
+import com.android.mms.LogTag;
 
 /**
  * MmsPushOutboxMessages listens for MMS_SEND_OUTBOX_MSG intent .

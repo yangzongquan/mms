@@ -44,7 +44,6 @@ import android.widget.MediaController;
 import android.widget.MediaController.MediaPlayerControl;
 import android.widget.SeekBar;
 
-import com.android.mms.R;
 import com.android.mms.dom.AttrImpl;
 import com.android.mms.dom.smil.SmilDocumentImpl;
 import com.android.mms.dom.smil.SmilPlayer;
@@ -53,6 +52,7 @@ import com.android.mms.model.LayoutModel;
 import com.android.mms.model.RegionModel;
 import com.android.mms.model.SlideshowModel;
 import com.android.mms.model.SmilHelper;
+import com.feinno.mms.R;
 import com.google.android.mms.MmsException;
 
 /**

@@ -16,6 +16,12 @@
 
 package com.android.mms.util;
 
+import java.io.ByteArrayOutputStream;
+import java.io.Closeable;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.util.Set;
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -28,16 +34,10 @@ import android.net.Uri;
 import android.util.Log;
 
 import com.android.mms.LogTag;
-import com.android.mms.R;
 import com.android.mms.TempFileProvider;
 import com.android.mms.ui.UriImage;
 import com.android.mms.util.ImageCacheService.ImageData;
-
-import java.io.ByteArrayOutputStream;
-import java.io.Closeable;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.util.Set;
+import com.feinno.mms.R;
 
 /**
  * Primary {@link ThumbnailManager} implementation used by {@link MessagingApplication}.

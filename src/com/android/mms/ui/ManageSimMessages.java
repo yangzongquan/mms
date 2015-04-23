@@ -44,8 +44,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.android.mms.R;
 import com.android.mms.transaction.MessagingNotification;
+import com.feinno.mms.R;
 
 /**
  * Displays a list of the SMS messages stored on the ICC.

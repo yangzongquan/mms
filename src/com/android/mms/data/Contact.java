@@ -34,8 +34,8 @@ import android.util.Log;
 
 import com.android.mms.LogTag;
 import com.android.mms.MmsApp;
-import com.android.mms.R;
 import com.android.mms.ui.MessageUtils;
+import com.feinno.mms.R;
 
 public class Contact {
     public static final int CONTACT_METHOD_TYPE_UNKNOWN = 0;

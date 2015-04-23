@@ -17,13 +17,11 @@
 
 package com.android.mms.ui;
 
-import java.io.IOException;
 import java.util.Map;
 
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.MediaPlayer;
 import android.net.Uri;
 import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
@@ -34,7 +32,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.android.mms.R;
+import com.feinno.mms.R;
 
 /**
  * A simplified view of slide in the slides list.

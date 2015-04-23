@@ -25,7 +25,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.NumberPicker;
 
-import com.android.mms.R;
+import com.feinno.mms.R;
 
 /**
  * A dialog that prompts the user for the message deletion limits.

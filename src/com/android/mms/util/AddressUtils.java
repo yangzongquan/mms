@@ -26,7 +26,7 @@ import android.text.TextUtils;
 
 import com.android.i18n.phonenumbers.PhoneNumberUtil;
 import com.android.mms.MmsApp;
-import com.android.mms.R;
+import com.feinno.mms.R;
 import com.google.android.mms.pdu.EncodedStringValue;
 import com.google.android.mms.pdu.PduHeaders;
 import com.google.android.mms.pdu.PduPersister;

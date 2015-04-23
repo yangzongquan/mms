@@ -16,10 +16,10 @@
 
 package com.android.mms.exif;
 
-import android.util.Log;
-
 import java.io.IOException;
 import java.io.InputStream;
+
+import android.util.Log;
 
 /**
  * This class reads the EXIF header of a JPEG file and stores it in
