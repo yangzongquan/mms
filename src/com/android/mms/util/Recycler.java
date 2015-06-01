@@ -24,16 +24,16 @@ import android.database.Cursor;
 import android.database.sqlite.SqliteWrapper;
 import android.net.Uri;
 import android.preference.PreferenceManager;
-import android.provider.BaseColumns;
-import android.provider.Telephony;
-import android.provider.Telephony.Mms;
-import android.provider.Telephony.Sms;
-import android.provider.Telephony.Sms.Conversations;
 import android.util.Log;
 
 import com.android.mms.MmsConfig;
 import com.android.mms.ui.MessageUtils;
 import com.android.mms.ui.MessagingPreferenceActivity;
+import com.android.provider.BaseColumns;
+import com.android.provider.IMessage;
+import com.android.provider.IMessage.Mms;
+import com.android.provider.IMessage.Sms;
+import com.android.provider.IMessage.Sms.Conversations;
 
 /**
  * The recycler is responsible for deleting old messages.
@@ -103,8 +103,7 @@ public abstract class Recycler {
 
     public static boolean isAutoDeleteEnabled(Context context) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        return prefs.getBoolean(MessagingPreferenceActivity.AUTO_DELETE,
-                DEFAULT_AUTO_DELETE);
+        return prefs.getBoolean(MessagingPreferenceActivity.AUTO_DELETE,  DEFAULT_AUTO_DELETE);
     }
 
     abstract public int getMessageLimit(Context context);
@@ -131,8 +130,8 @@ public abstract class Recycler {
 
     public static class SmsRecycler extends Recycler {
         private static final String[] ALL_SMS_THREADS_PROJECTION = {
-            Telephony.Sms.Conversations.THREAD_ID,
-            Telephony.Sms.Conversations.MESSAGE_COUNT
+            IMessage.Sms.Conversations.THREAD_ID,
+            IMessage.Sms.Conversations.MESSAGE_COUNT
         };
 
         private static final int ID             = 0;
@@ -164,8 +163,7 @@ public abstract class Recycler {
 
         public int getMessageLimit(Context context) {
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-            return prefs.getInt(MAX_SMS_MESSAGES_PER_THREAD,
-                    MmsConfig.getDefaultSMSMessagesPerThread());
+            return prefs.getInt(MAX_SMS_MESSAGES_PER_THREAD, MmsConfig.getDefaultSMSMessagesPerThread());
         }
 
         public void setMessageLimit(Context context, int limit) {
@@ -182,7 +180,7 @@ public abstract class Recycler {
         protected Cursor getAllThreads(Context context) {
             ContentResolver resolver = context.getContentResolver();
             Cursor cursor = SqliteWrapper.query(context, resolver,
-                    Telephony.Sms.Conversations.CONTENT_URI,
+                    IMessage.Sms.Conversations.CONTENT_URI,
                     ALL_SMS_THREADS_PROJECTION, null, null, Conversations.DEFAULT_SORT_ORDER);
 
             return cursor;
@@ -322,7 +320,7 @@ public abstract class Recycler {
         protected Cursor getAllThreads(Context context) {
             ContentResolver resolver = context.getContentResolver();
             Cursor cursor = SqliteWrapper.query(context, resolver,
-                    Uri.withAppendedPath(Telephony.Mms.CONTENT_URI, "threads"),
+                    Uri.withAppendedPath(IMessage.Mms.CONTENT_URI, "threads"),
                     ALL_MMS_THREADS_PROJECTION, null, null, Conversations.DEFAULT_SORT_ORDER);
 
             return cursor;
@@ -342,7 +340,7 @@ public abstract class Recycler {
                 String msgId = uri.getLastPathSegment();
                 ContentResolver resolver = context.getContentResolver();
                 cursor = SqliteWrapper.query(context, resolver,
-                        Telephony.Mms.CONTENT_URI,
+                        IMessage.Mms.CONTENT_URI,
                         MMS_MESSAGE_PROJECTION,
                         "thread_id in (select thread_id from pdu where _id=" + msgId +
                             ") AND locked=0",
@@ -389,7 +387,7 @@ public abstract class Recycler {
             try {
                 ContentResolver resolver = context.getContentResolver();
                 cursor = SqliteWrapper.query(context, resolver,
-                        Telephony.Mms.CONTENT_URI,
+                        IMessage.Mms.CONTENT_URI,
                         MMS_MESSAGE_PROJECTION,
                         "thread_id=" + threadId + " AND locked=0",
                         null, "date DESC");     // get in newest to oldest order
@@ -422,7 +420,7 @@ public abstract class Recycler {
         private void deleteMessagesOlderThanDate(Context context, long threadId,
                 long latestDate) {
             long cntDeleted = SqliteWrapper.delete(context, context.getContentResolver(),
-                    Telephony.Mms.CONTENT_URI,
+                    IMessage.Mms.CONTENT_URI,
                     "thread_id=" + threadId + " AND locked=0 AND date<" + latestDate,
                     null);
             if (LOCAL_DEBUG) {
@@ -451,7 +449,7 @@ public abstract class Recycler {
                     long threadId = getThreadId(cursor);
                     ContentResolver resolver = context.getContentResolver();
                     Cursor msgs = SqliteWrapper.query(context, resolver,
-                            Telephony.Mms.CONTENT_URI,
+                            IMessage.Mms.CONTENT_URI,
                             MMS_MESSAGE_PROJECTION,
                             "thread_id=" + threadId + " AND locked=0",
                             null, "date DESC");     // get in newest to oldest order

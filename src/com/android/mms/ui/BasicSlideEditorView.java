@@ -33,7 +33,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.feinno.mms.R;
+import com.yang.dx.R;
 
 /**
  * This is a basic view to show and edit a slide.

@@ -34,15 +34,15 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
-import android.provider.Telephony.Sms;
-import android.provider.Telephony.Sms.Inbox;
 import android.telephony.SmsMessage;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Window;
 
 import com.android.mms.transaction.MessagingNotification;
-import com.feinno.mms.R;
+import com.android.provider.IMessage.Sms;
+import com.android.provider.IMessage.Sms.Inbox;
+import com.yang.dx.R;
 
 /**
  * Display a class-zero SMS message to the user. Wait for the user to dismiss

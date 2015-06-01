@@ -53,14 +53,14 @@ import com.android.mms.MmsConfig;
 import com.android.mms.UnsupportContentTypeException;
 import com.android.mms.dom.smil.parser.SmilXmlSerializer;
 import com.android.mms.layout.LayoutManager;
-import com.google.android.mms.ContentType;
-import com.google.android.mms.MmsException;
-import com.google.android.mms.pdu.GenericPdu;
-import com.google.android.mms.pdu.MultimediaMessagePdu;
-import com.google.android.mms.pdu.PduBody;
-import com.google.android.mms.pdu.PduHeaders;
-import com.google.android.mms.pdu.PduPart;
-import com.google.android.mms.pdu.PduPersister;
+import com.android.mms.ContentType;
+import com.android.mms.MmsException;
+import com.android.mms.pdu.GenericPdu;
+import com.android.mms.pdu.MultimediaMessagePdu;
+import com.android.mms.pdu.PduBody;
+import com.android.mms.pdu.PduHeaders;
+import com.android.mms.pdu.PduPart;
+import com.android.mms.pdu.PduPersister;
 
 public class SlideshowModel extends Model
         implements List<SlideModel>, IModelChangedObserver {

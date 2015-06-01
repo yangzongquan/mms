@@ -52,8 +52,8 @@ import com.android.mms.model.LayoutModel;
 import com.android.mms.model.RegionModel;
 import com.android.mms.model.SlideshowModel;
 import com.android.mms.model.SmilHelper;
-import com.feinno.mms.R;
-import com.google.android.mms.MmsException;
+import com.android.mms.MmsException;
+import com.yang.dx.R;
 
 /**
  * Plays the given slideshow in full-screen mode with a common controller.

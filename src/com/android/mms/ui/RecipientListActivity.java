@@ -35,7 +35,7 @@ import android.widget.TextView;
 import com.android.mms.data.Contact;
 import com.android.mms.data.ContactList;
 import com.android.mms.data.Conversation;
-import com.feinno.mms.R;
+import com.yang.dx.R;
 
 /**
  * Display a list of recipients for a group conversation. This activity expects to receive a

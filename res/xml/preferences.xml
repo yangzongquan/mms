@@ -27,7 +27,7 @@
         <intent
             android:action="android.provider.Telephony.ACTION_CHANGE_DEFAULT"
             android:targetPackage="com.android.settings">
-            <extra android:name="package" android:value="com.feinno.mms"/>
+            <extra android:name="package" android:value="com.yang.dx"/>
         </intent>
     </Preference>
     <Preference
@@ -47,7 +47,7 @@
                       android:title="@string/pref_mms_clear_search_history_title"
                       android:summary="@string/pref_mms_clear_search_history_summary" />
 -->
-     <CheckBoxPreference android:defaultValue="false"
+     <CheckBoxPreference android:defaultValue="true"
                       android:key="pref_key_auto_delete"
                       android:summary="@string/pref_summary_auto_delete"
                       android:title="@string/pref_title_auto_delete" />
@@ -64,7 +64,7 @@
   </PreferenceCategory>
   <PreferenceCategory android:title="@string/pref_sms_settings_title"
                       android:key="pref_key_sms_settings" >
-    <CheckBoxPreference android:defaultValue="false"
+    <CheckBoxPreference android:defaultValue="true"
                       android:key="pref_key_sms_delivery_reports"
                       android:summary="@string/pref_summary_sms_delivery_reports"
                       android:title="@string/pref_title_sms_delivery_reports" />
@@ -78,11 +78,11 @@
                       android:key="pref_key_mms_group_mms"
                       android:summary="@string/pref_summary_mms_group_mms"
                       android:title="@string/pref_title_mms_group_mms" />
-    <CheckBoxPreference android:defaultValue="false"
+    <CheckBoxPreference android:defaultValue="true"
                       android:key="pref_key_mms_delivery_reports"
                       android:summary="@string/pref_summary_mms_delivery_reports"
                       android:title="@string/pref_title_mms_delivery_reports" />
-    <CheckBoxPreference android:defaultValue="false"
+    <CheckBoxPreference android:defaultValue="true"
                       android:key="pref_key_mms_read_reports"
                       android:summary="@string/pref_summary_mms_read_reports"
                       android:title="@string/pref_title_mms_read_reports" />
@@ -92,7 +92,7 @@
                       android:summary="@string/pref_summary_mms_auto_retrieval" />
     <CheckBoxPreference android:layout="?android:attr/preferenceLayoutChild"
                         android:dependency="pref_key_mms_auto_retrieval"
-                        android:defaultValue="false"
+                        android:defaultValue="true"
                         android:key="pref_key_mms_retrieval_during_roaming"
                         android:title="@string/pref_title_mms_retrieval_during_roaming"
                         android:summary="@string/pref_summary_mms_retrieval_during_roaming" />
@@ -110,6 +110,6 @@
     <CheckBoxPreference android:key="pref_key_vibrate"
                         android:title="@string/pref_title_notification_vibrateWhen"
                         android:dependency="pref_key_enable_notifications"
-                        android:defaultValue="false" />
+                        android:defaultValue="true" />
   </PreferenceCategory>
 </PreferenceScreen>

@@ -24,10 +24,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.provider.Settings;
-import android.provider.Telephony;
 
 import com.android.mms.ui.ManageSimMessages;
-import com.feinno.mms.R;
+import com.android.provider.IMessage;
+import com.yang.dx.R;
 
 /**
  * Receive Intent.SIM_FULL_ACTION.  Handle notification that SIM is full.
@@ -38,7 +38,7 @@ public class SimFullReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         if (Settings.Global.getInt(context.getContentResolver(),
             Settings.Global.DEVICE_PROVISIONED, 0) == 1 &&
-            Telephony.Sms.Intents.SIM_FULL_ACTION.equals(intent.getAction())) {
+            IMessage.Sms.Intents.SIM_FULL_ACTION.equals(intent.getAction())) {
 
             NotificationManager nm = (NotificationManager)
                 context.getSystemService(Context.NOTIFICATION_SERVICE);

@@ -24,12 +24,12 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SqliteWrapper;
 import android.net.Uri;
-import android.provider.Telephony.Sms;
-import android.provider.Telephony.Sms.Inbox;
 import android.telephony.SmsMessage;
 import android.util.Log;
 
 import com.android.mms.LogTag;
+import com.android.provider.IMessage.Sms;
+import com.android.provider.IMessage.Sms.Inbox;
 
 /**
  * Service that gets started by the MessageStatusReceiver when a message status report is
@@ -38,7 +38,7 @@ import com.android.mms.LogTag;
 public class MessageStatusService extends IntentService {
     private static final String[] ID_PROJECTION = new String[] { Sms._ID };
     private static final String LOG_TAG = "MessageStatusReceiver";
-    private static final Uri STATUS_URI = Uri.parse("content://sms/status");
+    private static final Uri STATUS_URI = Uri.parse("content://sms-yang/status");
 
     public MessageStatusService() {
         // Class name will be the thread name.

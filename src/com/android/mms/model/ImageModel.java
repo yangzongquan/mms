@@ -42,9 +42,9 @@ import com.android.mms.ui.UriImage;
 import com.android.mms.util.ItemLoadedCallback;
 import com.android.mms.util.ItemLoadedFuture;
 import com.android.mms.util.ThumbnailManager;
-import com.google.android.mms.MmsException;
-import com.google.android.mms.pdu.PduPart;
-import com.google.android.mms.pdu.PduPersister;
+import com.android.mms.MmsException;
+import com.android.mms.pdu.PduPart;
+import com.android.mms.pdu.PduPersister;
 
 
 public class ImageModel extends RegionMediaModel {

@@ -22,13 +22,6 @@ import java.util.regex.Pattern;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.Handler;
-import android.provider.BaseColumns;
-import android.provider.Telephony.Mms;
-import android.provider.Telephony.MmsSms;
-import android.provider.Telephony.MmsSms.PendingMessages;
-import android.provider.Telephony.Sms;
-import android.provider.Telephony.Sms.Conversations;
-import android.provider.Telephony.TextBasedSmsColumns;
 import android.util.Log;
 import android.util.LruCache;
 import android.view.LayoutInflater;
@@ -38,8 +31,15 @@ import android.widget.AbsListView;
 import android.widget.CursorAdapter;
 import android.widget.ListView;
 
-import com.feinno.mms.R;
-import com.google.android.mms.MmsException;
+import com.android.provider.BaseColumns;
+import com.android.provider.IMessage.Mms;
+import com.android.provider.IMessage.MmsSms;
+import com.android.provider.IMessage.MmsSms.PendingMessages;
+import com.android.provider.IMessage.Sms;
+import com.android.provider.IMessage.Sms.Conversations;
+import com.android.provider.IMessage.TextBasedSmsColumns;
+import com.android.mms.MmsException;
+import com.yang.dx.R;
 
 /**
  * The back-end data adapter of a message list.
@@ -49,7 +49,6 @@ public class MessageListAdapter extends CursorAdapter {
     private static final boolean LOCAL_LOGV = false;
 
     static final String[] PROJECTION = new String[] {
-        // TODO: should move this symbol into com.android.mms.telephony.Telephony.
         MmsSms.TYPE_DISCRIMINATOR_COLUMN,
         BaseColumns._ID,
         Conversations.THREAD_ID,

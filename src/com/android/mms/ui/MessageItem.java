@@ -23,9 +23,6 @@ import android.content.ContentUris;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
-import android.provider.Telephony.Mms;
-import android.provider.Telephony.MmsSms;
-import android.provider.Telephony.Sms;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -42,15 +39,18 @@ import com.android.mms.util.DownloadManager;
 import com.android.mms.util.ItemLoadedCallback;
 import com.android.mms.util.ItemLoadedFuture;
 import com.android.mms.util.PduLoaderManager;
-import com.feinno.mms.R;
-import com.google.android.mms.MmsException;
-import com.google.android.mms.pdu.EncodedStringValue;
-import com.google.android.mms.pdu.MultimediaMessagePdu;
-import com.google.android.mms.pdu.NotificationInd;
-import com.google.android.mms.pdu.PduHeaders;
-import com.google.android.mms.pdu.PduPersister;
-import com.google.android.mms.pdu.RetrieveConf;
-import com.google.android.mms.pdu.SendReq;
+import com.android.provider.IMessage.Mms;
+import com.android.provider.IMessage.MmsSms;
+import com.android.provider.IMessage.Sms;
+import com.android.mms.MmsException;
+import com.android.mms.pdu.EncodedStringValue;
+import com.android.mms.pdu.MultimediaMessagePdu;
+import com.android.mms.pdu.NotificationInd;
+import com.android.mms.pdu.PduHeaders;
+import com.android.mms.pdu.PduPersister;
+import com.android.mms.pdu.RetrieveConf;
+import com.android.mms.pdu.SendReq;
+import com.yang.dx.R;
 
 /**
  * Mostly immutable model for an SMS/MMS message.

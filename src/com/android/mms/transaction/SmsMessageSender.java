@@ -25,13 +25,13 @@ import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SqliteWrapper;
 import android.net.Uri;
 import android.preference.PreferenceManager;
-import android.provider.Telephony.Sms;
-import android.provider.Telephony.Sms.Inbox;
 import android.util.Log;
 
 import com.android.mms.LogTag;
 import com.android.mms.ui.MessagingPreferenceActivity;
-import com.google.android.mms.MmsException;
+import com.android.provider.IMessage.Sms;
+import com.android.provider.IMessage.Sms.Inbox;
+import com.android.mms.MmsException;
 
 public class SmsMessageSender implements MessageSender {
     protected final Context mContext;
@@ -93,7 +93,7 @@ public class SmsMessageSender implements MessageSender {
                     Log.v(TAG, "queueMessage mDests[i]: " + mDests[i] + " mThreadId: " + mThreadId);
                 }
                 Sms.addMessageToUri(mContext.getContentResolver(),
-                        Uri.parse("content://sms/queued"), mDests[i],
+                        Uri.parse("content://sms-yang/queued"), mDests[i],
                         mMessageText, null, mTimestamp,
                         true /* read */,
                         requestDeliveryReport,

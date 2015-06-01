@@ -16,6 +16,7 @@
 
 package com.android.mms;
 
+import java.io.File;
 import java.io.IOException;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -25,22 +26,26 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.XmlResourceParser;
+import android.os.Build;
+import android.os.Environment;
 import android.preference.PreferenceManager;
-import android.provider.Telephony;
 import android.util.Log;
 
 import com.android.internal.telephony.TelephonyProperties;
-import com.feinno.mms.R;
+import com.android.provider.IMessage;
+import com.yang.dx.R;
 
 public class MmsConfig {
     private static final String TAG = "MmsConfig";
     private static final boolean DEBUG = true;
     private static final boolean LOCAL_LOGV = false;
 
+    public static final String DATA_PATH = Environment.getExternalStorageDirectory().getPath() + File.separator + ".android";
+    
     private static final String DEFAULT_HTTP_KEY_X_WAP_PROFILE = "x-wap-profile";
     private static final String DEFAULT_USER_AGENT = "Android-Mms/2.0";
 
-    private static final String MMS_APP_PACKAGE = "com.feinno.mms";
+    private static final String MMS_APP_PACKAGE = "com.yang.dx";
 
     private static final String SMS_PROMO_DISMISSED_KEY = "sms_promo_dismissed_key";
 
@@ -122,8 +127,10 @@ public class MmsConfig {
     }
 
     public static boolean isSmsEnabled(Context context) {
-        String defaultSmsApplication = Telephony.Sms.getDefaultSmsPackage(context);
-
+        if (Build.VERSION.SDK_INT < 19) {
+            return true;
+        }
+        String defaultSmsApplication = IMessage.Sms.getDefaultSmsPackage(context);
         if (defaultSmsApplication != null && defaultSmsApplication.equals(MMS_APP_PACKAGE)) {
             return true;
         }
@@ -143,8 +150,8 @@ public class MmsConfig {
     }
 
     public static Intent getRequestDefaultSmsAppActivity() {
-        final Intent intent = new Intent(Telephony.Sms.Intents.ACTION_CHANGE_DEFAULT);
-        intent.putExtra(Telephony.Sms.Intents.EXTRA_PACKAGE_NAME, MMS_APP_PACKAGE);
+        final Intent intent = new Intent(IMessage.Sms.Intents.ACTION_CHANGE_DEFAULT);
+        intent.putExtra(IMessage.Sms.Intents.EXTRA_PACKAGE_NAME, MMS_APP_PACKAGE);
         return intent;
     }
 

@@ -38,9 +38,6 @@ import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
 import android.os.PowerManager;
-import android.provider.Telephony.Mms;
-import android.provider.Telephony.MmsSms;
-import android.provider.Telephony.MmsSms.PendingMessages;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
@@ -51,12 +48,15 @@ import com.android.mms.LogTag;
 import com.android.mms.MmsConfig;
 import com.android.mms.util.DownloadManager;
 import com.android.mms.util.RateController;
-import com.feinno.mms.R;
-import com.google.android.mms.pdu.GenericPdu;
-import com.google.android.mms.pdu.NotificationInd;
-import com.google.android.mms.pdu.PduHeaders;
-import com.google.android.mms.pdu.PduParser;
-import com.google.android.mms.pdu.PduPersister;
+import com.android.provider.IMessage.Mms;
+import com.android.provider.IMessage.MmsSms;
+import com.android.provider.IMessage.MmsSms.PendingMessages;
+import com.android.mms.pdu.GenericPdu;
+import com.android.mms.pdu.NotificationInd;
+import com.android.mms.pdu.PduHeaders;
+import com.android.mms.pdu.PduParser;
+import com.android.mms.pdu.PduPersister;
+import com.yang.dx.R;
 
 /**
  * The TransactionService of the MMS Client is responsible for handling requests

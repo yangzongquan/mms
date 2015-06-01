@@ -28,14 +28,14 @@ import android.database.Cursor;
 import android.database.sqlite.SqliteWrapper;
 import android.net.Uri;
 import android.provider.MediaStore.Audio;
-import android.provider.Telephony.Mms.Part;
 import android.text.TextUtils;
 import android.util.Log;
 
 import com.android.mms.ContentRestrictionException;
 import com.android.mms.dom.events.EventImpl;
 import com.android.mms.dom.smil.SmilMediaElementImpl;
-import com.google.android.mms.MmsException;
+import com.android.provider.IMessage.Mms.Part;
+import com.android.mms.MmsException;
 
 public class AudioModel extends MediaModel {
     private static final String TAG = MediaModel.TAG;

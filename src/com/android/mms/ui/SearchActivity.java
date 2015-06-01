@@ -32,7 +32,6 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.SearchRecentSuggestions;
-import android.provider.Telephony;
 import android.text.SpannableString;
 import android.text.TextPaint;
 import android.text.style.StyleSpan;
@@ -47,7 +46,8 @@ import android.widget.TextView;
 
 import com.android.mms.MmsApp;
 import com.android.mms.data.Contact;
-import com.feinno.mms.R;
+import com.android.provider.IMessage;
+import com.yang.dx.R;
 
 /***
  * Presents a List of search results.  Each item in the list represents a thread which
@@ -203,7 +203,7 @@ public class SearchActivity extends ListActivity
     }
 
     private long getThreadId(long sourceId, long which) {
-        Uri.Builder b = Uri.parse("content://mms-sms/messageIdToThread").buildUpon();
+        Uri.Builder b = Uri.parse("content://mms-sms-yang/messageIdToThread").buildUpon();
         b = b.appendQueryParameter("row_id", String.valueOf(sourceId));
         b = b.appendQueryParameter("table_to_use", String.valueOf(which));
         String s = b.build().toString();
@@ -371,7 +371,7 @@ public class SearchActivity extends ListActivity
         };
 
         // don't pass a projection since the search uri ignores it
-        Uri uri = Telephony.MmsSms.SEARCH_URI.buildUpon()
+        Uri uri = IMessage.MmsSms.SEARCH_URI.buildUpon()
                     .appendQueryParameter("pattern", searchString).build();
 
         // kick off a query for the threads which match the search string

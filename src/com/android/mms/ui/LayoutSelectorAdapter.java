@@ -22,7 +22,7 @@ import java.util.List;
 
 import android.content.Context;
 
-import com.feinno.mms.R;
+import com.yang.dx.R;
 
 /**
  * An adapter to store icons and strings for layout selector list.

@@ -78,9 +78,6 @@ import android.provider.ContactsContract.QuickContact;
 import android.provider.MediaStore.Images;
 import android.provider.MediaStore.Video;
 import android.provider.Settings;
-import android.provider.Telephony;
-import android.provider.Telephony.Mms;
-import android.provider.Telephony.Sms;
 import android.telephony.PhoneNumberUtils;
 import android.telephony.SmsMessage;
 import android.text.Editable;
@@ -136,14 +133,17 @@ import com.android.mms.util.DraftCache;
 import com.android.mms.util.PhoneNumberFormatter;
 import com.android.mms.util.SendingProgressTokenManager;
 import com.android.mms.widget.MmsWidgetProvider;
-import com.feinno.mms.R;
-import com.google.android.mms.ContentType;
-import com.google.android.mms.MmsException;
-import com.google.android.mms.pdu.EncodedStringValue;
-import com.google.android.mms.pdu.PduBody;
-import com.google.android.mms.pdu.PduPart;
-import com.google.android.mms.pdu.PduPersister;
-import com.google.android.mms.pdu.SendReq;
+import com.android.provider.IMessage;
+import com.android.provider.IMessage.Mms;
+import com.android.provider.IMessage.Sms;
+import com.android.mms.ContentType;
+import com.android.mms.MmsException;
+import com.android.mms.pdu.EncodedStringValue;
+import com.android.mms.pdu.PduBody;
+import com.android.mms.pdu.PduPart;
+import com.android.mms.pdu.PduPersister;
+import com.android.mms.pdu.SendReq;
+import com.yang.dx.R;
 
 /**
  * This is the main UI for:
@@ -880,7 +880,7 @@ public class ComposeMessageActivity extends Activity
             }
         }
         if (!(Mms.isEmailAddress(name) ||
-                Telephony.Mms.isPhoneNumber(name) ||
+                IMessage.Mms.isPhoneNumber(name) ||
                 contact.isMe())) {
             return false;
         }
@@ -1590,7 +1590,7 @@ public class ComposeMessageActivity extends Activity
                     fileName = fallback;
                 } else {
                     // For locally captured videos, fileName can end up being something like this:
-                    //      /mnt/sdcard/Android/data/com.feinno.mms/cache/.temp1.3gp
+                    //      /mnt/sdcard/Android/data/com.yang.dx/cache/.temp1.3gp
                     fileName = new String(location);
                 }
                 File originalFile = new File(fileName);

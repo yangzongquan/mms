@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 
-import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.app.SearchManager;
@@ -48,14 +47,10 @@ import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.Contacts;
-import android.provider.Telephony;
-import android.provider.Telephony.Mms;
-import android.provider.Telephony.Threads;
 import android.util.Log;
 import android.view.ActionMode;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
-import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -84,8 +79,11 @@ import com.android.mms.transaction.SmsRejectedReceiver;
 import com.android.mms.util.DraftCache;
 import com.android.mms.util.Recycler;
 import com.android.mms.widget.MmsWidgetProvider;
-import com.feinno.mms.R;
-import com.google.android.mms.pdu.PduHeaders;
+import com.android.provider.IMessage;
+import com.android.provider.IMessage.Mms;
+import com.android.provider.IMessage.Threads;
+import com.android.mms.pdu.PduHeaders;
+import com.yang.dx.R;
 
 /**
  * This activity provides a list view of existing conversations.
@@ -112,7 +110,6 @@ public class ConversationList extends ListActivity implements DraftCache.OnDraft
     private SharedPreferences mPrefs;
     private Handler mHandler;
     private boolean mDoOnceAfterFirstQuery;
-    private TextView mUnreadConvCount;
     private MenuItem mSearchItem;
     private SearchView mSearchView;
     private View mSmsPromoBannerView;
@@ -150,8 +147,6 @@ public class ConversationList extends ListActivity implements DraftCache.OnDraft
         listView.setEmptyView(findViewById(R.id.empty));
 
         initListAdapter();
-
-        setupActionBar();
 
         setTitle(R.string.app_label);
 
@@ -225,21 +220,6 @@ public class ConversationList extends ListActivity implements DraftCache.OnDraft
         mListAdapter.setOnContentChangedListener(mContentChangedListener);
     }
 
-    private void setupActionBar() {
-        ActionBar actionBar = getActionBar();
-
-        ViewGroup v = (ViewGroup)LayoutInflater.from(this)
-            .inflate(R.layout.conversation_list_actionbar, null);
-        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM,
-                ActionBar.DISPLAY_SHOW_CUSTOM);
-        actionBar.setCustomView(v,
-                new ActionBar.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT,
-                        ActionBar.LayoutParams.WRAP_CONTENT,
-                        Gravity.CENTER_VERTICAL | Gravity.RIGHT));
-
-        mUnreadConvCount = (TextView)v.findViewById(R.id.unread_conv_count);
-    }
-
     private final ConversationListAdapter.OnContentChangedListener mContentChangedListener =
         new ConversationListAdapter.OnContentChangedListener() {
         @Override
@@ -257,7 +237,7 @@ public class ConversationList extends ListActivity implements DraftCache.OnDraft
 
     private void initSmsPromoBanner() {
         final PackageManager packageManager = getPackageManager();
-        final String smsAppPackage = Telephony.Sms.getDefaultSmsPackage(this);
+        final String smsAppPackage = IMessage.Sms.getDefaultSmsPackage(this);
 
         // Get all the data we need about the default app to properly render the promo banner. We
         // try to show the icon and name of the user's selected SMS app and have the banner link
@@ -486,8 +466,7 @@ public class ConversationList extends ListActivity implements DraftCache.OnDraft
         MenuItem cellBroadcastItem = menu.findItem(R.id.action_cell_broadcasts);
         if (cellBroadcastItem != null) {
             // Enable link to Cell broadcast activity depending on the value in config.xml.
-            boolean isCellBroadcastAppLinkEnabled = this.getResources().getBoolean(
-                    com.android.internal.R.bool.config_cellBroadcastAppLinks);
+            boolean isCellBroadcastAppLinkEnabled = true;//this.getResources().getBoolean(com.android.internal.R.bool.config_cellBroadcastAppLinks);
             try {
                 if (isCellBroadcastAppLinkEnabled) {
                     PackageManager pm = getPackageManager();
@@ -915,7 +894,7 @@ public class ConversationList extends ListActivity implements DraftCache.OnDraft
                     count = cursor.getCount();
                     cursor.close();
                 }
-                mUnreadConvCount.setText(count > 0 ? Integer.toString(count) : null);
+//                mUnreadConvCount.setText(count > 0 ? Integer.toString(count) : null);
                 break;
 
             case HAVE_LOCKED_MESSAGES_TOKEN:

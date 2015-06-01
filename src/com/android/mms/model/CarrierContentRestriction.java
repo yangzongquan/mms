@@ -27,7 +27,7 @@ import com.android.mms.LogTag;
 import com.android.mms.MmsConfig;
 import com.android.mms.ResolutionException;
 import com.android.mms.UnsupportContentTypeException;
-import com.google.android.mms.ContentType;
+import com.android.mms.ContentType;
 
 public class CarrierContentRestriction implements ContentRestriction {
     private static final ArrayList<String> sSupportedImageTypes;

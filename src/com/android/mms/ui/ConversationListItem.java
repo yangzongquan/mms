@@ -38,7 +38,7 @@ import com.android.mms.LogTag;
 import com.android.mms.data.Contact;
 import com.android.mms.data.ContactList;
 import com.android.mms.data.Conversation;
-import com.feinno.mms.R;
+import com.yang.dx.R;
 
 /**
  * This class manages the view for given conversation.

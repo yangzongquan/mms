@@ -24,7 +24,7 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.QuickContactBadge;
 
-import com.feinno.mms.R;
+import com.yang.dx.R;
 
 public class QuickContactDivot extends QuickContactBadge implements Divot{
     private Drawable mDrawable;

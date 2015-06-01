@@ -32,7 +32,6 @@ import android.database.sqlite.SqliteWrapper;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.provider.Telephony.Sms;
 import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -45,14 +44,15 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.android.mms.transaction.MessagingNotification;
-import com.feinno.mms.R;
+import com.android.provider.IMessage.Sms;
+import com.yang.dx.R;
 
 /**
  * Displays a list of the SMS messages stored on the ICC.
  */
 public class ManageSimMessages extends Activity
         implements View.OnCreateContextMenuListener {
-    private static final Uri ICC_URI = Uri.parse("content://sms/icc");
+    private static final Uri ICC_URI = Uri.parse("content://sms-yang/icc");
     private static final String TAG = "ManageSimMessages";
     private static final int MENU_COPY_TO_PHONE_MEMORY = 0;
     private static final int MENU_DELETE_FROM_SIM = 1;

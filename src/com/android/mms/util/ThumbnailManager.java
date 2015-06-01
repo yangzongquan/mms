@@ -37,7 +37,7 @@ import com.android.mms.LogTag;
 import com.android.mms.TempFileProvider;
 import com.android.mms.ui.UriImage;
 import com.android.mms.util.ImageCacheService.ImageData;
-import com.feinno.mms.R;
+import com.yang.dx.R;
 
 /**
  * Primary {@link ThumbnailManager} implementation used by {@link MessagingApplication}.

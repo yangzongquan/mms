@@ -22,7 +22,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.database.Cursor;
-import android.provider.Telephony.Threads;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
@@ -38,7 +37,8 @@ import com.android.mms.data.Conversation;
 import com.android.mms.ui.ConversationList;
 import com.android.mms.ui.ConversationListItem;
 import com.android.mms.ui.MessageUtils;
-import com.feinno.mms.R;
+import com.android.provider.IMessage.Threads;
+import com.yang.dx.R;
 
 public class MmsWidgetService extends RemoteViewsService {
     private static final String TAG = "MmsWidgetService";

@@ -28,8 +28,8 @@ import com.android.mms.model.SlideModel;
 import com.android.mms.model.SlideshowModel;
 import com.android.mms.model.TextModel;
 import com.android.mms.model.VideoModel;
-import com.google.android.mms.ContentType;
-import com.google.android.mms.MmsException;
+import com.android.mms.ContentType;
+import com.android.mms.MmsException;
 
 /**
  * An utility to edit contents of a slide.

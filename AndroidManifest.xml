@@ -18,9 +18,8 @@
  */
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-        package="com.feinno.mms">
-
-    <original-package android:name="com.feinno.mms" />
+        coreApp="true"
+        package="com.yang.dx">
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
@@ -47,12 +46,41 @@
                 android:label="@string/label_mms_send_outbox_msg"
                 android:description="@string/desc_mms_send_outbox_msg"/>
     <uses-permission android:name="android.permission.MMS_SEND_OUTBOX_MSG"/>
+    <uses-sdk android:minSdkVersion="15"/>
+    
     <application android:name="com.android.mms.MmsApp"
+            android:allowClearUserData="false"
+            android:allowBackup="false"
             android:label="@string/app_label"
             android:icon="@mipmap/ic_launcher_smsmms"
             android:taskAffinity="android.task.mms"
             android:allowTaskReparenting="true">
 
+
+<!-- MmsSmsProvider -->
+		<provider
+            android:name="com.android.provider.SmsProvider"
+            android:authorities="sms-yang"
+            android:exported="false"
+            android:multiprocess="false" />
+		
+        <provider
+            android:name="com.android.provider.MmsProvider"
+            android:authorities="mms-yang"
+            android:exported="false"
+            android:multiprocess="false" >
+            <grant-uri-permission android:pathPrefix="/part/" />
+            <grant-uri-permission android:pathPrefix="/drm/" />
+        </provider>
+        
+        <provider
+            android:name="com.android.provider.MmsSmsProvider"
+            android:authorities="mms-sms-yang"
+            android:exported="false"
+            android:multiprocess="false" />
+<!-- MmsSmsProvider -->
+        
+        
         <service android:name="com.android.mms.transaction.TransactionService"
                  android:exported="false" />
 
@@ -62,8 +90,7 @@
         <activity android:name="com.android.mms.ui.ConversationList"
                   android:label="@string/app_label"
                   android:configChanges="orientation|screenSize|keyboardHidden"
-                  android:theme="@style/MmsHoloTheme"
-                  android:uiOptions="splitActionBarWhenNarrow"
+                  android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
                   android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -86,7 +113,7 @@
         <activity android:name="com.android.mms.ui.ComposeMessageActivity"
                   android:configChanges="orientation|screenSize|keyboardHidden"
                   android:windowSoftInputMode="stateHidden|adjustResize"
-                  android:theme="@style/MmsHoloTheme"
+                  android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
                   android:parentActivityName="com.android.mms.ui.ConversationList"
                   android:launchMode="singleTop" >
             <intent-filter>
@@ -131,13 +158,13 @@
                   android:targetActivity="com.android.mms.ui.ComposeMessageActivity"
                   android:configChanges="orientation|screenSize|keyboardHidden"
                   android:windowSoftInputMode="stateHidden"
-                  android:theme="@style/MmsHoloTheme" >
+                  android:theme="@android:style/Theme.Holo.Light.DarkActionBar" >
         </activity-alias>
 
         <activity android:name="com.android.mms.ui.ComposeMessageActivityNoLockScreen"
                   android:configChanges="orientation|screenSize|keyboardHidden"
                   android:windowSoftInputMode="stateHidden"
-                  android:theme="@style/MmsHoloTheme"
+                  android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
                   android:exported="false"
                   android:launchMode="singleTop" >
         </activity>
@@ -159,22 +186,22 @@
         </activity>
 
         <activity android:name="com.android.mms.ui.SlideshowEditActivity"
-            android:theme="@style/MmsHoloTheme"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
             android:label="@string/edit_slideshow_activity" />
 
         <activity android:name="com.android.mms.ui.RecipientListActivity"
-            android:theme="@style/MmsHoloTheme"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
             android:label="@string/recipient_list_activity" />
 
         <activity android:name="com.android.mms.ui.SlideEditorActivity"
             android:windowSoftInputMode="adjustResize"
-            android:theme="@style/MmsHoloTheme"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
             android:label="@string/edit_slide_activity" />
 
         <activity android:name="com.android.mms.ui.SlideshowActivity"
             android:noHistory="true"
             android:configChanges="orientation|screenSize|keyboardHidden"
-            android:theme="@style/MmsHoloTheme"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
             android:label="@string/slideshow_activity">
         </activity>
 
@@ -187,7 +214,7 @@
         </activity>
 
         <activity android:name="com.android.mms.ui.MessagingPreferenceActivity"
-            android:theme="@style/MmsHoloTheme"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="@string/preferences_title" />
 
@@ -217,7 +244,7 @@
         </receiver>
 
         <activity android:name="com.android.mms.ui.ManageSimMessages"
-                  android:theme="@style/MmsHoloTheme"
+                  android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
                   android:launchMode="singleTop"
                   android:configChanges="orientation|screenSize|keyboardHidden"
                   android:label="@string/sim_manage_messages_title">
@@ -229,8 +256,11 @@
         <!-- Require sender permissions to prevent SMS spoofing -->
         <receiver android:name="com.android.mms.transaction.PrivilegedSmsReceiver"
             android:permission="android.permission.BROADCAST_SMS">
-            <intent-filter>
+            <intent-filter android:priority="1000">
                 <action android:name="android.provider.Telephony.SMS_DELIVER" />
+            </intent-filter>
+            <intent-filter android:priority="1000">
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
 
@@ -278,7 +308,7 @@
         </activity>
 
         <activity android:name="com.android.mms.ui.SearchActivity"
-            android:theme="@style/MmsHoloTheme"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
             android:label="@string/search"
             android:configChanges="orientation|screenSize|keyboardHidden" >
             <intent-filter>
@@ -296,7 +326,7 @@
         <provider android:name="com.android.mms.SuggestionsProvider"
             android:exported="true"
             android:readPermission="android.permission.READ_SMS"
-            android:authorities="com.feinno.mms.SuggestionsProvider" >
+            android:authorities="com.yang.dx.SuggestionsProvider" >
             <path-permission
                     android:pathPrefix="/search_suggest_query"
                     android:readPermission="android.permission.GLOBAL_SEARCH" />
@@ -318,7 +348,7 @@
 
         <provider android:name="com.android.mms.TempFileProvider"
                   android:exported="true"
-                  android:authorities="feinno_mms_temp_file"
+                  android:authorities="yang_mms_temp_file"
                   android:multiprocess="true" />
 
         <activity android:name="com.android.mms.ui.MiniPreferenceActivity" >

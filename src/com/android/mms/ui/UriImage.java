@@ -35,7 +35,6 @@ import android.graphics.Matrix;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.provider.MediaStore.Images;
-import android.provider.Telephony.Mms.Part;
 import android.text.TextUtils;
 import android.util.Log;
 import android.webkit.MimeTypeMap;
@@ -43,8 +42,9 @@ import android.webkit.MimeTypeMap;
 import com.android.mms.LogTag;
 import com.android.mms.exif.ExifInterface;
 import com.android.mms.model.ImageModel;
-import com.google.android.mms.ContentType;
-import com.google.android.mms.pdu.PduPart;
+import com.android.provider.IMessage.Mms.Part;
+import com.android.mms.ContentType;
+import com.android.mms.pdu.PduPart;
 
 public class UriImage {
     private static final String TAG = "Mms/image";

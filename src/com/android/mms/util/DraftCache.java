@@ -22,11 +22,11 @@ import java.util.Set;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SqliteWrapper;
-import android.provider.Telephony.MmsSms;
-import android.provider.Telephony.Sms.Conversations;
 import android.util.Log;
 
 import com.android.mms.LogTag;
+import com.android.provider.IMessage.MmsSms;
+import com.android.provider.IMessage.Sms.Conversations;
 
 /**
  * Cache for information about draft messages on conversations.

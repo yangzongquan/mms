@@ -45,7 +45,7 @@ import com.android.mms.MmsApp;
 import com.android.mms.MmsConfig;
 import com.android.mms.transaction.TransactionService;
 import com.android.mms.util.Recycler;
-import com.feinno.mms.R;
+import com.yang.dx.R;
 
 /**
  * With this activity, users can set preferences for MMS and SMS and
@@ -260,9 +260,7 @@ public class MessagingPreferenceActivity extends PreferenceActivity
     }
 
     private void setSmsDisplayLimit() {
-        mSmsLimitPref.setSummary(
-                getString(R.string.pref_summary_delete_limit,
-                        mSmsRecycler.getMessageLimit(this)));
+        mSmsLimitPref.setSummary(getString(R.string.pref_summary_delete_limit, mSmsRecycler.getMessageLimit(this)));
     }
 
     private void setMmsDisplayLimit() {

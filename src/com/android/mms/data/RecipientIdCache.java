@@ -15,11 +15,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SqliteWrapper;
 import android.net.Uri;
-import android.provider.Telephony;
 import android.text.TextUtils;
 import android.util.Log;
 
 import com.android.mms.LogTag;
+import com.android.provider.IMessage;
 
 @ThreadSafe
 public class RecipientIdCache {
@@ -27,10 +27,10 @@ public class RecipientIdCache {
     private static final String TAG = "Mms/cache";
 
     private static Uri sAllCanonical =
-            Uri.parse("content://mms-sms/canonical-addresses");
+            Uri.parse("content://mms-sms-yang/canonical-addresses");
 
     private static Uri sSingleCanonicalAddressUri =
-            Uri.parse("content://mms-sms/canonical-address");
+            Uri.parse("content://mms-sms-yang/canonical-address");
 
     private static RecipientIdCache sInstance;
     static RecipientIdCache getInstance() { return sInstance; }
@@ -184,9 +184,9 @@ public class RecipientIdCache {
         }
 
         final ContentValues values = new ContentValues();
-        values.put(Telephony.CanonicalAddressesColumns.ADDRESS, number);
+        values.put(IMessage.CanonicalAddressesColumns.ADDRESS, number);
 
-        final StringBuilder buf = new StringBuilder(Telephony.CanonicalAddressesColumns._ID);
+        final StringBuilder buf = new StringBuilder(IMessage.CanonicalAddressesColumns._ID);
         buf.append('=').append(id);
 
         final Uri uri = ContentUris.withAppendedId(sSingleCanonicalAddressUri, id);
@@ -217,7 +217,7 @@ public class RecipientIdCache {
         Cursor c = SqliteWrapper.query(context, context.getContentResolver(),
                 sAllCanonical, null, null, null, null);
         if (c == null) {
-            Log.w(TAG, "null Cursor in content://mms-sms/canonical-addresses");
+            Log.w(TAG, "null Cursor in content://mms-sms-yang/canonical-addresses");
         }
         try {
             while (c.moveToNext()) {
@@ -265,7 +265,7 @@ public class RecipientIdCache {
         }
 
         final ContentValues values = new ContentValues();
-        values.put(Telephony.CanonicalAddressesColumns.ADDRESS, number);
+        values.put(IMessage.CanonicalAddressesColumns.ADDRESS, number);
 
         final ContentResolver cr = context.getContentResolver();
 

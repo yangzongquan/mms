@@ -35,10 +35,6 @@ import android.database.sqlite.SqliteWrapper;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.provider.Telephony.Mms;
-import android.provider.Telephony.MmsSms;
-import android.provider.Telephony.MmsSms.PendingMessages;
-import android.provider.Telephony.Sms;
 import android.telephony.SmsMessage;
 import android.text.TextUtils;
 import android.util.Log;
@@ -68,13 +64,17 @@ import com.android.mms.util.DraftCache;
 import com.android.mms.util.Recycler;
 import com.android.mms.util.ThumbnailManager;
 import com.android.mms.widget.MmsWidgetProvider;
-import com.google.android.mms.ContentType;
-import com.google.android.mms.MmsException;
-import com.google.android.mms.pdu.EncodedStringValue;
-import com.google.android.mms.pdu.PduBody;
-import com.google.android.mms.pdu.PduHeaders;
-import com.google.android.mms.pdu.PduPersister;
-import com.google.android.mms.pdu.SendReq;
+import com.android.provider.IMessage.Mms;
+import com.android.provider.IMessage.MmsSms;
+import com.android.provider.IMessage.MmsSms.PendingMessages;
+import com.android.provider.IMessage.Sms;
+import com.android.mms.ContentType;
+import com.android.mms.MmsException;
+import com.android.mms.pdu.EncodedStringValue;
+import com.android.mms.pdu.PduBody;
+import com.android.mms.pdu.PduHeaders;
+import com.android.mms.pdu.PduPersister;
+import com.android.mms.pdu.SendReq;
 
 /**
  * Contains all state related to a message being edited by the user.

@@ -24,8 +24,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SqliteWrapper;
 import android.net.Uri;
-import android.provider.Telephony.Mms;
-import android.provider.Telephony.Mms.Inbox;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -35,14 +33,16 @@ import com.android.mms.ui.MessagingPreferenceActivity;
 import com.android.mms.util.DownloadManager;
 import com.android.mms.util.Recycler;
 import com.android.mms.widget.MmsWidgetProvider;
-import com.google.android.mms.MmsException;
-import com.google.android.mms.pdu.AcknowledgeInd;
-import com.google.android.mms.pdu.EncodedStringValue;
-import com.google.android.mms.pdu.PduComposer;
-import com.google.android.mms.pdu.PduHeaders;
-import com.google.android.mms.pdu.PduParser;
-import com.google.android.mms.pdu.PduPersister;
-import com.google.android.mms.pdu.RetrieveConf;
+import com.android.provider.IMessage.Mms;
+import com.android.provider.IMessage.Mms.Inbox;
+import com.android.mms.MmsException;
+import com.android.mms.pdu.AcknowledgeInd;
+import com.android.mms.pdu.EncodedStringValue;
+import com.android.mms.pdu.PduComposer;
+import com.android.mms.pdu.PduHeaders;
+import com.android.mms.pdu.PduParser;
+import com.android.mms.pdu.PduPersister;
+import com.android.mms.pdu.RetrieveConf;
 
 /**
  * The RetrieveTransaction is responsible for retrieving multimedia

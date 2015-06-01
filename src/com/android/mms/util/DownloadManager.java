@@ -30,7 +30,6 @@ import android.net.Uri;
 import android.os.Handler;
 import android.os.SystemProperties;
 import android.preference.PreferenceManager;
-import android.provider.Telephony.Mms;
 import android.telephony.ServiceState;
 import android.util.Log;
 import android.widget.Toast;
@@ -39,11 +38,12 @@ import com.android.internal.telephony.TelephonyIntents;
 import com.android.internal.telephony.TelephonyProperties;
 import com.android.mms.data.Contact;
 import com.android.mms.ui.MessagingPreferenceActivity;
-import com.feinno.mms.R;
-import com.google.android.mms.MmsException;
-import com.google.android.mms.pdu.EncodedStringValue;
-import com.google.android.mms.pdu.NotificationInd;
-import com.google.android.mms.pdu.PduPersister;
+import com.android.provider.IMessage.Mms;
+import com.android.mms.MmsException;
+import com.android.mms.pdu.EncodedStringValue;
+import com.android.mms.pdu.NotificationInd;
+import com.android.mms.pdu.PduPersister;
+import com.yang.dx.R;
 
 public class DownloadManager {
     private static final String TAG = "DownloadManager";

@@ -23,10 +23,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.provider.Settings;
-import android.provider.Telephony;
 
 import com.android.mms.ui.ConversationList;
-import com.feinno.mms.R;
+import com.android.provider.IMessage;
+import com.yang.dx.R;
 
 
 /**
@@ -41,10 +41,10 @@ public class SmsRejectedReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         if (Settings.Global.getInt(context.getContentResolver(),
                 Settings.Global.DEVICE_PROVISIONED, 0) == 1 &&
-                Telephony.Sms.Intents.SMS_REJECTED_ACTION.equals(intent.getAction())) {
+                IMessage.Sms.Intents.SMS_REJECTED_ACTION.equals(intent.getAction())) {
 
             int reason = intent.getIntExtra("result", -1);
-            boolean outOfMemory = reason == Telephony.Sms.Intents.RESULT_SMS_OUT_OF_MEMORY;
+            boolean outOfMemory = reason == IMessage.Sms.Intents.RESULT_SMS_OUT_OF_MEMORY;
             if (!outOfMemory) {
                 // Right now, the only user-level rejection we show to the user is out-of-memory.
                 return;

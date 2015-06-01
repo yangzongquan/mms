@@ -17,8 +17,8 @@
 
 package com.android.mms.transaction;
 
-import static com.google.android.mms.pdu.PduHeaders.MESSAGE_TYPE_NOTIFICATION_IND;
-import static com.google.android.mms.pdu.PduHeaders.MESSAGE_TYPE_RETRIEVE_CONF;
+import static com.android.mms.pdu.PduHeaders.MESSAGE_TYPE_NOTIFICATION_IND;
+import static com.android.mms.pdu.PduHeaders.MESSAGE_TYPE_RETRIEVE_CONF;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -49,8 +49,6 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.preference.PreferenceManager;
-import android.provider.Telephony.Mms;
-import android.provider.Telephony.Sms;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
@@ -73,13 +71,15 @@ import com.android.mms.ui.MessagingPreferenceActivity;
 import com.android.mms.util.AddressUtils;
 import com.android.mms.util.DownloadManager;
 import com.android.mms.widget.MmsWidgetProvider;
-import com.feinno.mms.R;
-import com.google.android.mms.MmsException;
-import com.google.android.mms.pdu.EncodedStringValue;
-import com.google.android.mms.pdu.GenericPdu;
-import com.google.android.mms.pdu.MultimediaMessagePdu;
-import com.google.android.mms.pdu.PduHeaders;
-import com.google.android.mms.pdu.PduPersister;
+import com.android.provider.IMessage.Mms;
+import com.android.provider.IMessage.Sms;
+import com.android.mms.MmsException;
+import com.android.mms.pdu.EncodedStringValue;
+import com.android.mms.pdu.GenericPdu;
+import com.android.mms.pdu.MultimediaMessagePdu;
+import com.android.mms.pdu.PduHeaders;
+import com.android.mms.pdu.PduPersister;
+import com.yang.dx.R;
 
 /**
  * This class is used to update the notification indicator. It will check whether
@@ -138,7 +138,7 @@ public class MessagingNotification {
     private static final NotificationInfoComparator INFO_COMPARATOR =
             new NotificationInfoComparator();
 
-    private static final Uri UNDELIVERED_URI = Uri.parse("content://mms-sms/undelivered");
+    private static final Uri UNDELIVERED_URI = Uri.parse("content://mms-sms-yang/undelivered");
 
 
     private final static String NOTIFICATION_DELETED_ACTION =

@@ -10,7 +10,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
-import com.feinno.mms.R;
+import com.yang.dx.R;
 
 /**
  * This activity is used by 3rd party apps to allow the user to turn on/off notifications in

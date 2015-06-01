@@ -30,7 +30,7 @@ import android.view.Window;
 import android.widget.Button;
 
 import com.android.mms.util.RateController;
-import com.feinno.mms.R;
+import com.yang.dx.R;
 
 public class ConfirmRateLimitActivity extends Activity {
     private static final String TAG = "ConfirmRateLimitActivity";

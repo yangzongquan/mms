@@ -56,12 +56,12 @@ import com.android.mms.model.SlideModel;
 import com.android.mms.model.SlideshowModel;
 import com.android.mms.ui.BasicSlideEditorView.OnTextChangedListener;
 import com.android.mms.ui.MessageUtils.ResizeImageResultCallback;
-import com.feinno.mms.R;
-import com.google.android.mms.ContentType;
-import com.google.android.mms.MmsException;
-import com.google.android.mms.pdu.PduBody;
-import com.google.android.mms.pdu.PduPart;
-import com.google.android.mms.pdu.PduPersister;
+import com.android.mms.ContentType;
+import com.android.mms.MmsException;
+import com.android.mms.pdu.PduBody;
+import com.android.mms.pdu.PduPart;
+import com.android.mms.pdu.PduPersister;
+import com.yang.dx.R;
 
 /**
  * This activity allows user to edit the contents of a slide.

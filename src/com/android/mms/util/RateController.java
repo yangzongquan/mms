@@ -24,8 +24,9 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.Cursor;
 import android.database.sqlite.SqliteWrapper;
-import android.provider.Telephony.Mms.Rate;
 import android.util.Log;
+
+import com.android.provider.IMessage.Mms.Rate;
 
 public class RateController {
     private static final String TAG = "RateController";

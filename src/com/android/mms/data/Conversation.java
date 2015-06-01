@@ -16,13 +16,6 @@ import android.database.Cursor;
 import android.database.sqlite.SqliteWrapper;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.provider.BaseColumns;
-import android.provider.Telephony.Mms;
-import android.provider.Telephony.MmsSms;
-import android.provider.Telephony.Sms;
-import android.provider.Telephony.Sms.Conversations;
-import android.provider.Telephony.Threads;
-import android.provider.Telephony.ThreadsColumns;
 import android.telephony.PhoneNumberUtils;
 import android.text.TextUtils;
 import android.util.Log;
@@ -35,8 +28,15 @@ import com.android.mms.ui.ComposeMessageActivity;
 import com.android.mms.ui.MessageUtils;
 import com.android.mms.util.AddressUtils;
 import com.android.mms.util.DraftCache;
-import com.feinno.mms.R;
-import com.google.android.mms.pdu.PduHeaders;
+import com.android.provider.BaseColumns;
+import com.android.provider.IMessage.Mms;
+import com.android.provider.IMessage.MmsSms;
+import com.android.provider.IMessage.Sms;
+import com.android.provider.IMessage.Sms.Conversations;
+import com.android.provider.IMessage.Threads;
+import com.android.provider.IMessage.ThreadsColumns;
+import com.android.mms.pdu.PduHeaders;
+import com.yang.dx.R;
 
 /**
  * An interface for finding information about conversations and/or creating new ones.
@@ -198,7 +198,7 @@ public class Conversation {
 
     /**
      * Find the conversation matching in the specified Uri.  Example
-     * forms: {@value content://mms-sms/conversations/3} or
+     * forms: {@value content://mms-sms-yang/conversations/3} or
      * {@value sms:+12124797990}.
      * When called with a null Uri, equivalent to {@link #createNew}.
      */

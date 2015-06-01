@@ -34,7 +34,7 @@ import android.util.Log;
 
 import com.android.mms.LogTag;
 import com.android.mms.MmsConfig;
-import com.google.android.mms.MmsException;
+import com.android.mms.MmsException;
 // TODO: remove dependency for SDK build
 
 public abstract class MediaModel extends Model implements EventListener {

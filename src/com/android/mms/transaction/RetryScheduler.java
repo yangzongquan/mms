@@ -29,16 +29,16 @@ import android.database.sqlite.SqliteWrapper;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
-import android.provider.Telephony.Mms;
-import android.provider.Telephony.MmsSms;
-import android.provider.Telephony.MmsSms.PendingMessages;
 import android.util.Log;
 
 import com.android.mms.LogTag;
 import com.android.mms.util.DownloadManager;
-import com.feinno.mms.R;
-import com.google.android.mms.pdu.PduHeaders;
-import com.google.android.mms.pdu.PduPersister;
+import com.android.provider.IMessage.Mms;
+import com.android.provider.IMessage.MmsSms;
+import com.android.provider.IMessage.MmsSms.PendingMessages;
+import com.android.mms.pdu.PduHeaders;
+import com.android.mms.pdu.PduPersister;
+import com.yang.dx.R;
 
 public class RetryScheduler implements Observer {
     private static final String TAG = "RetryScheduler";

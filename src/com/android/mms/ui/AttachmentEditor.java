@@ -31,7 +31,7 @@ import android.widget.LinearLayout;
 import com.android.mms.data.WorkingMessage;
 import com.android.mms.model.SlideModel;
 import com.android.mms.model.SlideshowModel;
-import com.feinno.mms.R;
+import com.yang.dx.R;
 
 /**
  * This is an embedded editor/view to add photos and sound/video clips

@@ -32,7 +32,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.feinno.mms.R;
+import com.yang.dx.R;
 
 /**
  * A simplified view of slide in the slides list.

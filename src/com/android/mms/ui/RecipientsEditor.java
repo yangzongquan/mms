@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
-import android.provider.Telephony.Mms;
 import android.telephony.PhoneNumberUtils;
 import android.text.Annotation;
 import android.text.Editable;
@@ -45,6 +44,7 @@ import com.android.ex.chips.RecipientEditTextView;
 import com.android.mms.MmsConfig;
 import com.android.mms.data.Contact;
 import com.android.mms.data.ContactList;
+import com.android.provider.IMessage.Mms;
 
 /**
  * Provide UI for editing the recipients of multi-media messages.

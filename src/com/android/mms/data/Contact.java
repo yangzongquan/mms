@@ -27,7 +27,6 @@ import android.provider.ContactsContract.Contacts;
 import android.provider.ContactsContract.Data;
 import android.provider.ContactsContract.Presence;
 import android.provider.ContactsContract.Profile;
-import android.provider.Telephony.Mms;
 import android.telephony.PhoneNumberUtils;
 import android.text.TextUtils;
 import android.util.Log;
@@ -35,7 +34,8 @@ import android.util.Log;
 import com.android.mms.LogTag;
 import com.android.mms.MmsApp;
 import com.android.mms.ui.MessageUtils;
-import com.feinno.mms.R;
+import com.android.provider.IMessage.Mms;
+import com.yang.dx.R;
 
 public class Contact {
     public static final int CONTACT_METHOD_TYPE_UNKNOWN = 0;

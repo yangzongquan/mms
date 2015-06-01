@@ -42,10 +42,10 @@ import com.android.mms.model.IModelChangedObserver;
 import com.android.mms.model.Model;
 import com.android.mms.model.SlideModel;
 import com.android.mms.model.SlideshowModel;
-import com.feinno.mms.R;
-import com.google.android.mms.MmsException;
-import com.google.android.mms.pdu.PduBody;
-import com.google.android.mms.pdu.PduPersister;
+import com.android.mms.MmsException;
+import com.android.mms.pdu.PduBody;
+import com.android.mms.pdu.PduPersister;
+import com.yang.dx.R;
 
 /**
  * A list of slides which allows user to edit each item in it.

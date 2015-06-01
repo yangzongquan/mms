@@ -6,8 +6,6 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.provider.Telephony.Mms;
-import android.provider.Telephony.Sms;
 import android.telephony.PhoneNumberUtils;
 import android.telephony.SmsManager;
 import android.util.Log;
@@ -16,7 +14,9 @@ import com.android.mms.LogTag;
 import com.android.mms.MmsConfig;
 import com.android.mms.data.Conversation;
 import com.android.mms.ui.MessageUtils;
-import com.google.android.mms.MmsException;
+import com.android.provider.IMessage.Mms;
+import com.android.provider.IMessage.Sms;
+import com.android.mms.MmsException;
 
 public class SmsSingleRecipientSender extends SmsMessageSender {
 

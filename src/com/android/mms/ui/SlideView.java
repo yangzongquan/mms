@@ -43,7 +43,7 @@ import android.widget.TextView;
 import android.widget.VideoView;
 
 import com.android.mms.layout.LayoutManager;
-import com.feinno.mms.R;
+import com.yang.dx.R;
 
 /**
  * A basic view to show the contents of a slide.

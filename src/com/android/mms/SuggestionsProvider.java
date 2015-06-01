@@ -38,7 +38,7 @@ import android.text.TextUtils;
  */
 public class SuggestionsProvider extends android.content.ContentProvider {
 
-    final static String AUTHORITY = "com.feinno.mms.SuggestionsProvider";
+    final static String AUTHORITY = "com.yang.dx.SuggestionsProvider";
 //    final static int MODE = DATABASE_MODE_QUERIES + DATABASE_MODE_2LINES;
 
     public SuggestionsProvider() {
@@ -69,7 +69,7 @@ public class SuggestionsProvider extends android.content.ContentProvider {
     public Cursor query(Uri uri, String[] projection, String selection,
             String[] selectionArgs, String sortOrder) {
         Uri u = Uri.parse(String.format(
-                "content://mms-sms/searchSuggest?pattern=%s",
+                "content://mms-sms-yang/searchSuggest?pattern=%s",
                 selectionArgs[0]));
         Cursor c = getContext().getContentResolver().query(
                 u,
@@ -296,7 +296,7 @@ public class SuggestionsProvider extends android.content.ContentProvider {
             Row row = mRows.get(mCurrentRow);
             switch (column - mColumnCount) {
                 case INTENT_DATA_COLUMN:
-                    Uri.Builder b = Uri.parse("content://mms-sms/search").buildUpon();
+                    Uri.Builder b = Uri.parse("content://mms-sms-yang/search").buildUpon();
                     b = b.appendQueryParameter("pattern", row.getSnippet());
                     Uri u = b.build();
                     return u.toString();

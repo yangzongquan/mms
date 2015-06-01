@@ -23,11 +23,11 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
-import android.provider.Telephony.Mms;
 import android.util.Log;
 
 import com.android.mms.LogTag;
 import com.android.mms.MmsApp;
+import com.android.provider.IMessage.Mms;
 
 /**
  * MmsSystemEventReceiver receives the

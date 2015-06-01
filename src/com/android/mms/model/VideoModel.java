@@ -38,8 +38,8 @@ import com.android.mms.dom.smil.SmilMediaElementImpl;
 import com.android.mms.util.ItemLoadedCallback;
 import com.android.mms.util.ItemLoadedFuture;
 import com.android.mms.util.ThumbnailManager;
-import com.google.android.mms.ContentType;
-import com.google.android.mms.MmsException;
+import com.android.mms.ContentType;
+import com.android.mms.MmsException;
 
 public class VideoModel extends RegionMediaModel {
     private static final String TAG = MediaModel.TAG;

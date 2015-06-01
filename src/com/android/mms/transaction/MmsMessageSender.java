@@ -24,23 +24,23 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.preference.PreferenceManager;
-import android.provider.Telephony.Mms;
-import android.provider.Telephony.MmsSms;
-import android.provider.Telephony.MmsSms.PendingMessages;
 import android.util.Log;
 
 import com.android.mms.LogTag;
 import com.android.mms.ui.MessagingPreferenceActivity;
 import com.android.mms.util.SendingProgressTokenManager;
-import com.google.android.mms.InvalidHeaderValueException;
-import com.google.android.mms.MmsException;
-import com.google.android.mms.pdu.EncodedStringValue;
-import com.google.android.mms.pdu.GenericPdu;
-import com.google.android.mms.pdu.PduHeaders;
-import com.google.android.mms.pdu.PduPersister;
-import com.google.android.mms.pdu.ReadRecInd;
-import com.google.android.mms.pdu.SendReq;
-import com.google.android.mms.util.SqliteWrapper;
+import com.android.provider.IMessage.Mms;
+import com.android.provider.IMessage.MmsSms;
+import com.android.provider.IMessage.MmsSms.PendingMessages;
+import com.android.mms.InvalidHeaderValueException;
+import com.android.mms.MmsException;
+import com.android.mms.pdu.EncodedStringValue;
+import com.android.mms.pdu.GenericPdu;
+import com.android.mms.pdu.PduHeaders;
+import com.android.mms.pdu.PduPersister;
+import com.android.mms.pdu.ReadRecInd;
+import com.android.mms.pdu.SendReq;
+import com.android.mms.util.SqliteWrapper;
 
 public class MmsMessageSender implements MessageSender {
     private static final String TAG = "MmsMessageSender";

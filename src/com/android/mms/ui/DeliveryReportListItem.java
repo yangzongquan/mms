@@ -26,7 +26,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.mms.data.Contact;
-import com.feinno.mms.R;
+import com.yang.dx.R;
 
 /**
  * This class displays the status for a single recipient of a message.  It is used in

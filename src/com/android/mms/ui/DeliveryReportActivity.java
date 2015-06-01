@@ -30,8 +30,6 @@ import android.database.Cursor;
 import android.database.sqlite.SqliteWrapper;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.Telephony.Mms;
-import android.provider.Telephony.Sms;
 import android.telephony.PhoneNumberUtils;
 import android.text.TextUtils;
 import android.util.Log;
@@ -40,8 +38,10 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ListView;
 
-import com.feinno.mms.R;
-import com.google.android.mms.pdu.PduHeaders;
+import com.android.provider.IMessage.Mms;
+import com.android.provider.IMessage.Sms;
+import com.android.mms.pdu.PduHeaders;
+import com.yang.dx.R;
 
 /**
  * This is the UI for displaying a delivery report:

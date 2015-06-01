@@ -30,7 +30,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 // TODO: remove dependency for SDK build
 
-import com.feinno.mms.R;
+import com.yang.dx.R;
 
 /**
  * This class provides an embedded editor/viewer of video attachment.

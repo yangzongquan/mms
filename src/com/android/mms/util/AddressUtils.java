@@ -20,16 +20,16 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SqliteWrapper;
 import android.net.Uri;
-import android.provider.Telephony.Mms;
-import android.provider.Telephony.Mms.Addr;
 import android.text.TextUtils;
 
 import com.android.i18n.phonenumbers.PhoneNumberUtil;
 import com.android.mms.MmsApp;
-import com.feinno.mms.R;
-import com.google.android.mms.pdu.EncodedStringValue;
-import com.google.android.mms.pdu.PduHeaders;
-import com.google.android.mms.pdu.PduPersister;
+import com.android.provider.IMessage.Mms;
+import com.android.provider.IMessage.Mms.Addr;
+import com.android.mms.pdu.EncodedStringValue;
+import com.android.mms.pdu.PduHeaders;
+import com.android.mms.pdu.PduPersister;
+import com.yang.dx.R;
 
 public class AddressUtils {
     private static final String TAG = "AddressUtils";

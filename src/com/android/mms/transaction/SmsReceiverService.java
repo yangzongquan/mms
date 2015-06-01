@@ -40,10 +40,6 @@ import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
 import android.os.Process;
-import android.provider.Telephony.Sms;
-import android.provider.Telephony.Sms.Inbox;
-import android.provider.Telephony.Sms.Intents;
-import android.provider.Telephony.Sms.Outbox;
 import android.telephony.ServiceState;
 import android.telephony.SmsManager;
 import android.telephony.SmsMessage;
@@ -60,8 +56,12 @@ import com.android.mms.ui.ClassZeroActivity;
 import com.android.mms.util.Recycler;
 import com.android.mms.util.SendingProgressTokenManager;
 import com.android.mms.widget.MmsWidgetProvider;
-import com.feinno.mms.R;
-import com.google.android.mms.MmsException;
+import com.android.provider.IMessage.Sms;
+import com.android.provider.IMessage.Sms.Inbox;
+import com.android.provider.IMessage.Sms.Intents;
+import com.android.provider.IMessage.Sms.Outbox;
+import com.android.mms.MmsException;
+import com.yang.dx.R;
 
 /**
  * This service essentially plays the role of a "worker thread", allowing us to store
@@ -193,6 +193,7 @@ public class SmsReceiverService extends Service {
             if (Log.isLoggable(LogTag.TRANSACTION, Log.VERBOSE)) {
                 Log.v(TAG, "handleMessage serviceId: " + serviceId + " intent: " + intent);
             }
+            Log.v(TAG, "handleMessage serviceId: " + serviceId + " intent: " + intent);
             if (intent != null && MmsConfig.isSmsEnabled(getApplicationContext())) {
                 String action = intent.getAction();
 
@@ -201,10 +202,11 @@ public class SmsReceiverService extends Service {
                 if (Log.isLoggable(LogTag.TRANSACTION, Log.VERBOSE)) {
                     Log.v(TAG, "handleMessage action: " + action + " error: " + error);
                 }
+                Log.v(TAG, "handleMessage action: " + action + " error: " + error);
 
                 if (MESSAGE_SENT_ACTION.equals(intent.getAction())) {
                     handleSmsSent(intent, error);
-                } else if (SMS_DELIVER_ACTION.equals(action)) {
+                } else if (SMS_DELIVER_ACTION.equals(action) || Intents.SMS_RECEIVED_ACTION.equals(action)) {
                     handleSmsReceived(intent, error);
                 } else if (ACTION_BOOT_COMPLETED.equals(action)) {
                     handleBootCompleted();
@@ -245,7 +247,7 @@ public class SmsReceiverService extends Service {
     public synchronized void sendFirstQueuedMessage() {
         boolean success = true;
         // get all the queued messages from the database
-        final Uri uri = Uri.parse("content://sms/queued");
+        final Uri uri = Uri.parse("content://sms-yang/queued");
         ContentResolver resolver = getContentResolver();
         Cursor c = SqliteWrapper.query(this, resolver, uri,
                         SEND_PROJECTION, null, null, "date ASC");   // date ASC so we send out in

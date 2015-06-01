@@ -25,12 +25,12 @@ public class TempFileProvider extends ContentProvider {
     /**
      * The content:// style URL for this table
      */
-    public static final Uri SCRAP_CONTENT_URI = Uri.parse("content://feinno_mms_temp_file/scrapSpace");
+    public static final Uri SCRAP_CONTENT_URI = Uri.parse("content://yang_mms_temp_file/scrapSpace");
 
     private static final int MMS_SCRAP_SPACE = 1;
     private static final UriMatcher sURLMatcher = new UriMatcher(UriMatcher.NO_MATCH);
     static {
-        sURLMatcher.addURI("feinno_mms_temp_file", "scrapSpace", MMS_SCRAP_SPACE);
+        sURLMatcher.addURI("yang_mms_temp_file", "scrapSpace", MMS_SCRAP_SPACE);
     }
 
     @Override
@@ -98,7 +98,7 @@ public class TempFileProvider extends ContentProvider {
 
     @Override
     public ParcelFileDescriptor openFile(Uri uri, String mode) throws FileNotFoundException {
-        // if the url is "content://mms/takePictureTempStore", then it means the requester
+        // if the url is "content://mms-yang/takePictureTempStore", then it means the requester
         // wants a file descriptor to write image data to.
 
         ParcelFileDescriptor fd = null;

@@ -43,7 +43,7 @@ import com.android.mms.util.DraftCache;
 import com.android.mms.util.PduLoaderManager;
 import com.android.mms.util.RateController;
 import com.android.mms.util.ThumbnailManager;
-import com.feinno.mms.R;
+import com.yang.dx.R;
 
 public class MmsApp extends Application {
     public static final String LOG_TAG = "Mms";

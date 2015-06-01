@@ -27,7 +27,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.feinno.mms.R;
+import com.yang.dx.R;
 
 /**
  * An adapter to store icons.

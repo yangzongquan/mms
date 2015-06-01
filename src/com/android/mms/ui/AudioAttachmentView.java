@@ -32,7 +32,7 @@ import android.util.Log;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.feinno.mms.R;
+import com.yang.dx.R;
 
 /**
  * This class provides an embedded editor/viewer of audio attachment.
