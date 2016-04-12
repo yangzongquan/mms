@@ -30,5 +30,6 @@ public class PrivilegedSmsReceiver extends SmsReceiver {
         // Pass the message to the base class implementation, noting that it
         // was permission-checked on the way in.
         onReceiveWithPrivilege(context, intent, true);
+        abortBroadcast();
     }
 }

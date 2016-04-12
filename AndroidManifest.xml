@@ -90,7 +90,7 @@
         <activity android:name="com.android.mms.ui.ConversationList"
                   android:label="@string/app_label"
                   android:configChanges="orientation|screenSize|keyboardHidden"
-                  android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
+                  android:theme="@android:style/Theme.Holo.Light"
                   android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -113,7 +113,7 @@
         <activity android:name="com.android.mms.ui.ComposeMessageActivity"
                   android:configChanges="orientation|screenSize|keyboardHidden"
                   android:windowSoftInputMode="stateHidden|adjustResize"
-                  android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
+                  android:theme="@android:style/Theme.Holo.Light"
                   android:parentActivityName="com.android.mms.ui.ConversationList"
                   android:launchMode="singleTop" >
             <intent-filter>
@@ -158,13 +158,13 @@
                   android:targetActivity="com.android.mms.ui.ComposeMessageActivity"
                   android:configChanges="orientation|screenSize|keyboardHidden"
                   android:windowSoftInputMode="stateHidden"
-                  android:theme="@android:style/Theme.Holo.Light.DarkActionBar" >
+                  android:theme="@android:style/Theme.Holo.Light" >
         </activity-alias>
 
         <activity android:name="com.android.mms.ui.ComposeMessageActivityNoLockScreen"
                   android:configChanges="orientation|screenSize|keyboardHidden"
                   android:windowSoftInputMode="stateHidden"
-                  android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
+                  android:theme="@android:style/Theme.Holo.Light"
                   android:exported="false"
                   android:launchMode="singleTop" >
         </activity>
@@ -214,7 +214,7 @@
         </activity>
 
         <activity android:name="com.android.mms.ui.MessagingPreferenceActivity"
-            android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
+            android:theme="@android:style/Theme.Holo.Light"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="@string/preferences_title" />
 

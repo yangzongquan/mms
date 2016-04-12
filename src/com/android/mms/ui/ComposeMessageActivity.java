@@ -2643,33 +2643,12 @@ public class ComposeMessageActivity extends Activity
 
         if (isRecipientCallable()) {
             MenuItem item = menu.add(0, MENU_CALL_RECIPIENT, 0, R.string.menu_call)
-                .setIcon(R.drawable.ic_menu_call)
+                .setIcon(R.drawable.conversation_menu_call)
                 .setTitle(R.string.menu_call);
             if (!isRecipientsEditorVisible()) {
                 // If we're not composing a new message, show the call icon in the actionbar
                 item.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
             }
-        }
-
-        if (MmsConfig.getMmsEnabled() && mIsSmsEnabled) {
-            if (!isSubjectEditorVisible()) {
-                menu.add(0, MENU_ADD_SUBJECT, 0, R.string.add_subject).setIcon(
-                        R.drawable.ic_menu_edit);
-            }
-            if (!mWorkingMessage.hasAttachment()) {
-                menu.add(0, MENU_ADD_ATTACHMENT, 0, R.string.add_attachment)
-                        .setIcon(R.drawable.ic_menu_attachment)
-                    .setTitle(R.string.add_attachment)
-                        .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);    // add to actionbar
-            }
-        }
-
-        if (isPreparedForSending() && mIsSmsEnabled) {
-            menu.add(0, MENU_SEND, 0, R.string.send).setIcon(android.R.drawable.ic_menu_send);
-        }
-
-        if (getRecipients().size() > 1) {
-            menu.add(0, MENU_GROUP_PARTICIPANTS, 0, R.string.menu_group_participants);
         }
 
         if (mMsgListAdapter.getCount() > 0 && mIsSmsEnabled) {
@@ -2689,6 +2668,28 @@ public class ComposeMessageActivity extends Activity
 
         menu.add(0, MENU_PREFERENCES, 0, R.string.menu_preferences).setIcon(
                 android.R.drawable.ic_menu_preferences);
+
+        if (isPreparedForSending() && mIsSmsEnabled) {
+            menu.add(0, MENU_SEND, 0, R.string.send).setIcon(android.R.drawable.ic_menu_send);
+        }
+
+        if (MmsConfig.getMmsEnabled() && mIsSmsEnabled) {
+            if (!isSubjectEditorVisible()) {
+                menu.add(0, MENU_ADD_SUBJECT, 0, R.string.add_subject).setIcon(
+                        R.drawable.ic_menu_edit);
+            }
+            if (!mWorkingMessage.hasAttachment()) {
+                menu.add(0, MENU_ADD_ATTACHMENT, 0, R.string.add_attachment)
+                        .setIcon(R.drawable.ic_menu_attachment)
+                    .setTitle(R.string.add_attachment)
+//                        .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
+                        ;    // add to actionbar
+            }
+        }
+
+        if (getRecipients().size() > 1) {
+            menu.add(0, MENU_GROUP_PARTICIPANTS, 0, R.string.menu_group_participants);
+        }
 
         if (LogTag.DEBUG_DUMP) {
             menu.add(0, MENU_DEBUG_DUMP, 0, R.string.menu_debug_dump);

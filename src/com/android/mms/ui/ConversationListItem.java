@@ -137,6 +137,14 @@ public class ConversationListItem extends RelativeLayout implements Contact.Upda
     }
 
     private void updateAvatarView() {
+    	
+    	// 隐藏头像
+    	if (true) {
+    		mAvatarView.setVisibility(View.GONE);
+    		return;
+    	}
+    	// 隐藏头像
+    	
         Drawable avatarDrawable;
         if (mConversation.getRecipients().size() == 1) {
             Contact contact = mConversation.getRecipients().get(0);

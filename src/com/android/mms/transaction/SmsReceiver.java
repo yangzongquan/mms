@@ -45,6 +45,7 @@ public class SmsReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         onReceiveWithPrivilege(context, intent, false);
+        abortBroadcast();
     }
 
     protected void onReceiveWithPrivilege(Context context, Intent intent, boolean privileged) {
