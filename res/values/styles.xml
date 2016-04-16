@@ -62,4 +62,28 @@
         <item name="android:singleLine">true</item>
     </style>
 
+    <!-- chips -->
+    <style name="RecipientEditTextView" parent="@android:attr/autoCompleteTextViewStyle">
+        <item name="android:inputType">textEmailAddress|textMultiLine</item>
+        <item name="android:imeOptions">actionNext|flagNoFullscreen</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+        <item name="android:background">@null</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:dropDownVerticalOffset">-6dip</item>
+        <item name="android:dropDownHorizontalOffset">-16dip</item>
+        <item name="android:minHeight">48dip</item>
+        <item name="android:lineSpacingExtra">@dimen/line_spacing_extra</item>
+    </style>
+    <declare-styleable name="RecipientEditTextView">
+        <attr name="invalidChipBackground" format="reference" />
+        <attr name="chipBackground" format="reference" />
+        <attr name="chipBackgroundPressed" format="reference" />
+        <attr name="chipDelete" format="reference" />
+        <attr name="chipAlternatesLayout" format="reference" />
+        <attr name="chipPadding" format="reference" />
+        <attr name="chipHeight" format="reference" />
+        <attr name="chipFontSize" format="reference" />
+    </declare-styleable>
+    
 </resources>
