@@ -144,7 +144,8 @@ public class MmsSmsDatabaseHelper extends SQLiteOpenHelper {
                         "     (SELECT date * 1000 AS date, sub_cs AS snippet_cs, thread_id FROM pdu" +
                         "      UNION SELECT date, 0 AS snippet_cs, thread_id FROM sms)" +
                         "    WHERE thread_id = OLD.thread_id ORDER BY date DESC LIMIT 1) " +
-                        "  WHERE threads._id = OLD.thread_id; ";
+                        "  WHERE threads._id = OLD.thread_id; " +
+                        PDU_UPDATE_THREAD_READ_BODY;
 
 
     // When a part is inserted, if it is not text/plain or application/smil

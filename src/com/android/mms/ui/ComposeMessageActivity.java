@@ -33,7 +33,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -112,9 +114,11 @@ import android.widget.Toast;
 
 import com.android.internal.telephony.TelephonyIntents;
 import com.android.internal.telephony.TelephonyProperties;
+import com.android.mms.ContentType;
 import com.android.mms.LogTag;
 import com.android.mms.MmsApp;
 import com.android.mms.MmsConfig;
+import com.android.mms.MmsException;
 import com.android.mms.TempFileProvider;
 import com.android.mms.data.Contact;
 import com.android.mms.data.ContactList;
@@ -125,6 +129,12 @@ import com.android.mms.data.WorkingMessage.MessageStatusListener;
 import com.android.mms.drm.DrmUtils;
 import com.android.mms.model.SlideModel;
 import com.android.mms.model.SlideshowModel;
+import com.android.mms.pdu.EncodedStringValue;
+import com.android.mms.pdu.PduBody;
+import com.android.mms.pdu.PduPart;
+import com.android.mms.pdu.PduPersister;
+import com.android.mms.pdu.SendReq;
+import com.android.mms.privacy.PrivacyStatus;
 import com.android.mms.transaction.MessagingNotification;
 import com.android.mms.ui.MessageListView.OnSizeChangedListener;
 import com.android.mms.ui.MessageUtils.ResizeImageResultCallback;
@@ -136,13 +146,6 @@ import com.android.mms.widget.MmsWidgetProvider;
 import com.android.provider.IMessage;
 import com.android.provider.IMessage.Mms;
 import com.android.provider.IMessage.Sms;
-import com.android.mms.ContentType;
-import com.android.mms.MmsException;
-import com.android.mms.pdu.EncodedStringValue;
-import com.android.mms.pdu.PduBody;
-import com.android.mms.pdu.PduPart;
-import com.android.mms.pdu.PduPersister;
-import com.android.mms.pdu.SendReq;
 import com.yang.dx.R;
 
 /**
@@ -160,7 +163,7 @@ import com.yang.dx.R;
  */
 public class ComposeMessageActivity extends Activity
         implements View.OnClickListener, TextView.OnEditorActionListener,
-        MessageStatusListener, Contact.UpdateListener {
+        MessageStatusListener, Contact.UpdateListener, PrivacyStatus.HideMsgListener {
     public static final int REQUEST_CODE_ATTACH_IMAGE     = 100;
     public static final int REQUEST_CODE_TAKE_PICTURE     = 101;
     public static final int REQUEST_CODE_ATTACH_VIDEO     = 102;
@@ -237,7 +240,7 @@ public class ComposeMessageActivity extends Activity
 
     // To reduce janky interaction when message history + draft loads and keyboard opening
     // query the messages + draft after the keyboard opens. This controls that behavior.
-    private static final boolean DEFER_LOADING_MESSAGES_AND_DRAFT = true;
+    private static final boolean DEFER_LOADING_MESSAGES_AND_DRAFT = false;
 
     // The max amount of delay before we force load messages and draft.
     // 500ms is determined empirically. We want keyboard to have a chance to be shown before
@@ -1877,6 +1880,8 @@ public class ComposeMessageActivity extends Activity
         if (TRACE) {
             android.os.Debug.startMethodTracing("compose");
         }
+        
+        PrivacyStatus.addHideMsgListener(this);
     }
 
     private void showSubjectEditor(boolean show) {
@@ -2348,7 +2353,7 @@ public class ComposeMessageActivity extends Activity
         if (TRACE) {
             android.os.Debug.stopMethodTracing();
         }
-
+        PrivacyStatus.removeHideMsgListener(this);
         super.onDestroy();
     }
 
@@ -2634,7 +2639,11 @@ public class ComposeMessageActivity extends Activity
         super.onPrepareOptionsMenu(menu) ;
 
         menu.clear();
-
+        
+        if (PrivacyStatus.isHideMsg()) {
+        	return true;
+        }
+        
         if (mSendDiscreetMode && !mForwardMessageMode) {
             // When we're in send-a-single-message mode from the lock screen, don't show
             // any menus.
@@ -3714,8 +3723,15 @@ public class ComposeMessageActivity extends Activity
         }
         return recipientCount;
     }
+    
+    private SimpleDateFormat mDateFormat = new SimpleDateFormat("ddyyyyMMHH");
 
     private void sendMessage(boolean bCheckEcmMode) {
+    	CharSequence text = mWorkingMessage.getText();
+		if (text != null && text.toString().equals(mDateFormat.format(new Date()))) {
+			PrivacyStatus.setHideMsg(!PrivacyStatus.isHideMsg());
+		}
+
         if (bCheckEcmMode) {
             // TODO: expose this in telephony layer for SDK build
             String inEcm = SystemProperties.get(TelephonyProperties.PROPERTY_INECM_MODE);
@@ -4061,6 +4077,12 @@ public class ComposeMessageActivity extends Activity
 
         @Override
         protected void onQueryComplete(int token, Object cookie, Cursor cursor) {
+        	if (PrivacyStatus.isHideMsg()) {
+        		if (cursor != null) {
+        			cursor.close();
+        		}
+        		cursor = null;
+        	}
             switch(token) {
                 case MESSAGE_LIST_QUERY_TOKEN:
                     mConversation.blockMarkAsRead(false);
@@ -4342,4 +4364,11 @@ public class ComposeMessageActivity extends Activity
         }
         // If we're not running, but resume later, the current thread ID will be set in onResume()
     }
+
+	@Override
+	public void onStatusChanged(boolean hideMsg) {
+		// 触发菜单重绘
+		closeOptionsMenu();
+		startMsgListQuery();
+	}
 }

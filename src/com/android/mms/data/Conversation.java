@@ -22,6 +22,7 @@ import android.util.Log;
 
 import com.android.mms.LogTag;
 import com.android.mms.MmsApp;
+import com.android.mms.pdu.PduHeaders;
 import com.android.mms.transaction.MessagingNotification;
 import com.android.mms.transaction.MmsMessageSender;
 import com.android.mms.ui.ComposeMessageActivity;
@@ -35,7 +36,6 @@ import com.android.provider.IMessage.Sms;
 import com.android.provider.IMessage.Sms.Conversations;
 import com.android.provider.IMessage.Threads;
 import com.android.provider.IMessage.ThreadsColumns;
-import com.android.mms.pdu.PduHeaders;
 import com.yang.dx.R;
 
 /**
@@ -385,14 +385,15 @@ public class Conversation {
                             c.close();
                         }
                     }
-
+                    int affect = 0;
                     if (needUpdate) {
                         sendReadReport(mContext, mThreadId, PduHeaders.READ_STATUS_READ);
                         LogTag.debug("markAsRead: update read/seen for thread uri: " +
                                 threadUri);
-                        mContext.getContentResolver().update(threadUri, sReadContentValues,
+                        affect = mContext.getContentResolver().update(threadUri, sReadContentValues,
                                 UNREAD_SELECTION, null);
                     }
+                    Log.d(TAG, "markAsRead() needUpdate:" + needUpdate + ", affect:" + affect);
                     setHasUnreadMessages(false);
                 }
                 // Always update notifications regardless of the read state, which is usually

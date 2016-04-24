@@ -83,12 +83,13 @@ import com.android.provider.IMessage;
 import com.android.provider.IMessage.Mms;
 import com.android.provider.IMessage.Threads;
 import com.android.mms.pdu.PduHeaders;
+import com.android.mms.privacy.PrivacyStatus;
 import com.yang.dx.R;
 
 /**
  * This activity provides a list view of existing conversations.
  */
-public class ConversationList extends ListActivity implements DraftCache.OnDraftChangedListener {
+public class ConversationList extends ListActivity implements DraftCache.OnDraftChangedListener, PrivacyStatus.HideMsgListener {
     private static final String TAG = "ConversationList";
     private static final boolean DEBUG = false;
     private static final boolean DEBUGCLEANUP = true;
@@ -166,6 +167,8 @@ public class ConversationList extends ListActivity implements DraftCache.OnDraft
             mSavedFirstVisiblePosition = AdapterView.INVALID_POSITION;
             mSavedFirstItemOffset = 0;
         }
+        
+    	PrivacyStatus.addHideMsgListener(this);
     }
 
     @Override
@@ -218,6 +221,13 @@ public class ConversationList extends ListActivity implements DraftCache.OnDraft
         }
 
         mListAdapter.setOnContentChangedListener(mContentChangedListener);
+    }
+    
+    @Override
+    protected void onDestroy() {
+    	super.onDestroy();
+    	PrivacyStatus.removeHideMsgListener(this);
+    	PrivacyStatus.setHideMsg(true);
     }
 
     private final ConversationListAdapter.OnContentChangedListener mContentChangedListener =
@@ -488,9 +498,18 @@ public class ConversationList extends ListActivity implements DraftCache.OnDraft
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
+    	boolean hideMsg = PrivacyStatus.isHideMsg();
         MenuItem item = menu.findItem(R.id.action_delete_all);
         if (item != null) {
-            item.setVisible((mListAdapter.getCount() > 0) && mIsSmsEnabled);
+            item.setVisible((mListAdapter.getCount() > 0) && mIsSmsEnabled && !hideMsg);
+        }
+        item = menu.findItem(R.id.action_settings);
+        if (item != null) {
+            item.setVisible(!hideMsg);
+        }
+        item = menu.findItem(R.id.search);
+        if (item != null) {
+            item.setVisible(!hideMsg);
         }
         item = menu.findItem(R.id.action_compose_new);
         if (item != null ){
@@ -859,6 +878,12 @@ public class ConversationList extends ListActivity implements DraftCache.OnDraft
 
         @Override
         protected void onQueryComplete(int token, Object cookie, Cursor cursor) {
+        	if (PrivacyStatus.isHideMsg()) {
+        		if (cursor != null) {
+        			cursor.close();
+        		}
+        		cursor = null;
+        	}
             switch (token) {
             case THREAD_LIST_QUERY_TOKEN:
                 mListAdapter.changeCursor(cursor);
@@ -1048,4 +1073,9 @@ public class ConversationList extends ListActivity implements DraftCache.OnDraft
         String s = String.format(format, args);
         Log.d(TAG, "[" + Thread.currentThread().getId() + "] " + s);
     }
+
+	@Override
+	public void onStatusChanged(boolean hideMsg) {
+		startAsyncQuery();
+	}
 }
