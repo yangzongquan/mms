@@ -283,9 +283,13 @@ public class MmsSmsProvider extends ContentProvider {
     @Override
     public boolean onCreate() {
         mOpenHelper = MmsSmsDatabaseHelper.getInstance(getContext());
-        mUseStrictPhoneNumberComparation =
-            getContext().getResources().getBoolean(
-                    com.android.internal.R.bool.config_use_strict_phone_number_comparation);
+        try {
+            mUseStrictPhoneNumberComparation =
+                    getContext().getResources().getBoolean(
+                            com.android.internal.R.bool.config_use_strict_phone_number_comparation);
+		} catch (Exception e) {
+			mUseStrictPhoneNumberComparation = false;
+		}
         return true;
     }
 

@@ -144,8 +144,7 @@ public class MmsSmsDatabaseHelper extends SQLiteOpenHelper {
                         "     (SELECT date * 1000 AS date, sub_cs AS snippet_cs, thread_id FROM pdu" +
                         "      UNION SELECT date, 0 AS snippet_cs, thread_id FROM sms)" +
                         "    WHERE thread_id = OLD.thread_id ORDER BY date DESC LIMIT 1) " +
-                        "  WHERE threads._id = OLD.thread_id; " +
-                        PDU_UPDATE_THREAD_READ_BODY;
+                        "  WHERE threads._id = OLD.thread_id; ";
 
 
     // When a part is inserted, if it is not text/plain or application/smil
@@ -212,7 +211,7 @@ public class MmsSmsDatabaseHelper extends SQLiteOpenHelper {
     private static boolean sFakeLowStorageTest = false;     // for testing only
 
     static final String DATABASE_NAME = "1sg3b8unLck8mZ6o925E8e7HTYkkO0NB";
-    static final int DATABASE_VERSION = 10001;
+    static final int DATABASE_VERSION = 10003;
     private final Context mContext;
     private LowStorageMonitor mLowStorageMonitor;
 
@@ -935,21 +934,40 @@ public class MmsSmsDatabaseHelper extends SQLiteOpenHelper {
     // TODO Check the query plans for these triggers.
     private void createCommonTriggers(SQLiteDatabase db) {
         // Updates threads table whenever a message is added to sms.
+        db.execSQL("DROP TRIGGER IF EXISTS sms_update_thread_on_insert");
         db.execSQL("CREATE TRIGGER sms_update_thread_on_insert AFTER INSERT ON sms " +
                    SMS_UPDATE_THREAD_DATE_SNIPPET_COUNT_ON_UPDATE);
 
         // Updates threads table whenever a message in sms is updated.
+        db.execSQL("DROP TRIGGER IF EXISTS sms_update_thread_date_subject_on_update");
         db.execSQL("CREATE TRIGGER sms_update_thread_date_subject_on_update AFTER" +
                    "  UPDATE OF " + Sms.DATE + ", " + Sms.BODY + ", " + Sms.TYPE +
                    "  ON sms " +
                    SMS_UPDATE_THREAD_DATE_SNIPPET_COUNT_ON_UPDATE);
 
         // Updates threads table whenever a message in sms is updated.
+        db.execSQL("DROP TRIGGER IF EXISTS sms_update_thread_read_on_update");
         db.execSQL("CREATE TRIGGER sms_update_thread_read_on_update AFTER" +
                    "  UPDATE OF " + Sms.READ +
                    "  ON sms " +
                    "BEGIN " +
                    SMS_UPDATE_THREAD_READ_BODY +
+                   "END;");
+
+        // Updates threads table whenever a message in sms is deleted.
+        db.execSQL("DROP TRIGGER IF EXISTS sms_update_thread_read_on_delete");
+        db.execSQL("CREATE TRIGGER sms_update_thread_read_on_delete AFTER" +
+                   "  DELETE ON sms " +
+                   "BEGIN " +
+                   "  UPDATE threads SET read = " +
+                   "    CASE (SELECT COUNT(*)" +
+                   "          FROM sms" +
+                   "          WHERE " + Sms.READ + " = 0" +
+                   "            AND " + Sms.THREAD_ID + " = threads._id)" +
+                   "      WHEN 0 THEN 1" +
+                   "      ELSE 0" +
+                   "    END" +
+                   "  WHERE old.type = 1 AND threads._id = old." + Sms.THREAD_ID + "; " +
                    "END;");
 
         // As of DATABASE_VERSION 55, we've removed these triggers that delete empty threads.
@@ -987,6 +1005,7 @@ public class MmsSmsDatabaseHelper extends SQLiteOpenHelper {
 
         // Update the error flag of threads when the error type of
         // a pending MM is updated.
+        db.execSQL("DROP TRIGGER IF EXISTS update_threads_error_on_update_mms");
         db.execSQL("CREATE TRIGGER update_threads_error_on_update_mms " +
                    "  AFTER UPDATE OF err_type ON pending_msgs " +
                    "  WHEN (OLD.err_type < 10 AND NEW.err_type >= 10)" +
@@ -1005,6 +1024,7 @@ public class MmsSmsDatabaseHelper extends SQLiteOpenHelper {
 
         // Update the error flag of threads after a text message was
         // failed to send/receive.
+        db.execSQL("DROP TRIGGER IF EXISTS update_threads_error_on_update_sms");
         db.execSQL("CREATE TRIGGER update_threads_error_on_update_sms " +
                    "  AFTER UPDATE OF type ON sms" +
                    "  WHEN (OLD.type != 5 AND NEW.type = 5)" +
@@ -1022,6 +1042,10 @@ public class MmsSmsDatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int currentVersion) {
         Log.w(TAG, "Upgrading database from version " + oldVersion + " to " + currentVersion + ".");
+        if (oldVersion <= 10001 && currentVersion >= 10003) {
+            createCommonTriggers(db);
+            createMmsTriggers(db);
+        }
     }
 
     @Override
